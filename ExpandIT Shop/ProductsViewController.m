@@ -7,8 +7,11 @@
 //
 
 #import "ProductsViewController.h"
+#import "EISGroup.h"
 
 @interface ProductsViewController ()
+
+@property (nonatomic, strong) NSMutableArray *groups;
 
 @end
 
@@ -17,11 +20,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	self.groups = [[NSMutableArray alloc] init];
+	for (int i = 0; i < 5; i++) {
+		EISGroup *group = [[EISGroup alloc] init];
+		NSString *name = [NSString stringWithFormat:@"Product %d", i+1];
+		group.name = name;
+		[self.groups addObject:group];
+	}
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITableViewDataSource methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return [self.groups count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSString *identifier = @"Cell";
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+	
+	EISGroup *group = [self.groups objectAtIndex:indexPath.row];
+	
+	// Configure cell
+	cell.textLabel.text = group.name;
+	
+	return cell;
 }
 
 /*
