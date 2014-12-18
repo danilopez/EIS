@@ -27,7 +27,22 @@ static NSString *Cell = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	self.edgesForExtendedLayout=UIRectEdgeNone;
+
+	self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+	self.tableView.delegate = self;
+	self.tableView.dataSource = self;
+	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	[self.view addSubview:self.tableView];
 	[self getAllGroups];
+	
+//	self.groupsInPlain = [[NSMutableArray alloc] init];
+//	for(int i = 0; i < 20; i++) {
+//		EISGroup *group = [[EISGroup alloc] init];
+//		group.name = [NSString stringWithFormat:@"Product %d",i];
+//		group.indentationLevel = 1;
+//		[self.groupsInPlain addObject:group];
+//	}
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,25 +62,19 @@ static NSString *Cell = @"Cell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Cell];
 	EISGroup *group = [self.groupsInPlain objectAtIndex:indexPath.row];
-	
+	if (!cell) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Cell];
+	}
 	// Configure cell
 	cell.textLabel.text = group.name;
 	cell.indentationLevel = group.indentationLevel;
 	cell.indentationWidth = 20;
+	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	return cell;
 }
 
-- (NSMutableArray *)transformGroups:(NSMutableArray *)theGroups withIndentation:(NSInteger)indentationLevel {
-	NSMutableArray *result = [[NSMutableArray alloc] init];
-	for (EISGroup *group in theGroups) {
-		group.indentationLevel = indentationLevel;
-		[result addObject:group];
-		if (group.children) {
-			[result addObjectsFromArray:[self transformGroups:group.children withIndentation:++indentationLevel]];
-			indentationLevel--;
-		}
-	}
-	return result;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];	
 }
 
 #pragma mark - Session
@@ -122,6 +131,20 @@ static NSString *Cell = @"Cell";
 	[self.groups addObjectsFromArray:mutableArray];
 	self.groupsInPlain = [self transformGroups:self.groups withIndentation:0];
 	[self.tableView reloadData];
+}
+
+
+- (NSMutableArray *)transformGroups:(NSMutableArray *)theGroups withIndentation:(NSInteger)indentationLevel {
+	NSMutableArray *result = [[NSMutableArray alloc] init];
+	for (EISGroup *group in theGroups) {
+		group.indentationLevel = indentationLevel;
+		[result addObject:group];
+		if (group.children) {
+			[result addObjectsFromArray:[self transformGroups:group.children withIndentation:++indentationLevel]];
+			indentationLevel--;
+		}
+	}
+	return result;
 }
 
 /*
