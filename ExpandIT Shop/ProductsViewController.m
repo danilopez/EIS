@@ -14,6 +14,7 @@
 @interface ProductsViewController ()
 
 @property (nonatomic, strong) NSMutableArray *groups;
+@property (nonatomic, strong) NSMutableArray *groupsInPlain;
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
 
@@ -36,22 +37,35 @@ static NSString *Cell = @"Cell";
 
 #pragma mark - UITableViewDataSource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return self.groups ? [self.groups count] : 0;
+	return [self.groupsInPlain count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return self.groups ? 1 : 0;
+	return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Cell];
-	
-	EISGroup *group = [self.groups objectAtIndex:indexPath.row];
+	EISGroup *group = [self.groupsInPlain objectAtIndex:indexPath.row];
 	
 	// Configure cell
 	cell.textLabel.text = group.name;
-	
+	cell.indentationLevel = group.indentationLevel;
+	cell.indentationWidth = 20;
 	return cell;
+}
+
+- (NSMutableArray *)transformGroups:(NSMutableArray *)theGroups withIndentation:(NSInteger)indentationLevel {
+	NSMutableArray *result = [[NSMutableArray alloc] init];
+	for (EISGroup *group in theGroups) {
+		group.indentationLevel = indentationLevel;
+		[result addObject:group];
+		if (group.children) {
+			[result addObjectsFromArray:[self transformGroups:group.children withIndentation:++indentationLevel]];
+			indentationLevel--;
+		}
+	}
+	return result;
 }
 
 #pragma mark - Session
@@ -80,7 +94,6 @@ static NSString *Cell = @"Cell";
 				NSLog(@"%@", error);
 			}
 		}
-		NSLog(@"Doing something");
 		NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 		dispatch_async(dispatch_get_main_queue(), ^{
 			if (results) {
@@ -107,7 +120,7 @@ static NSString *Cell = @"Cell";
 	
 	[self.groups removeAllObjects];
 	[self.groups addObjectsFromArray:mutableArray];
-	NSLog(@"%@",self.groups);
+	self.groupsInPlain = [self transformGroups:self.groups withIndentation:0];
 	[self.tableView reloadData];
 }
 

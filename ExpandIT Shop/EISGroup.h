@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, copy) NSNumber *groupId;
 @property (nonatomic, copy) NSNumber *parentId;
+@property (nonatomic, strong) NSMutableArray *children;
+@property (nonatomic, assign) NSInteger indentationLevel;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 

@@ -10,7 +10,7 @@
 
 @implementation EISGroup
 
-@synthesize url, name, groupId, parentId;
+@synthesize url, name, groupId, parentId, children, indentationLevel;
 
 - (id)initWithDictionary:(NSDictionary *)dict {
 	self = [super init];
@@ -19,16 +19,24 @@
 		url = [dict objectForKey:@"Url"];
 		groupId = [dict objectForKey:@"GroupId"];
 		parentId = [dict objectForKey:@"ParentId"];
+		indentationLevel = 0;
+		if([[dict objectForKey:@"Children"] count] > 0) {
+			children = [[NSMutableArray alloc] initWithCapacity:[[dict objectForKey:@"Children"] count]];
+		}
+		for(NSDictionary *dictionary in [dict objectForKey:@"Children"]) {
+			EISGroup *group = [[EISGroup alloc] initWithDictionary:dictionary];
+			[children addObject:group];
+		}
 	}
 	return self;
 }
 
 - (NSString *)description {
 	NSString *groupIdStr = [self.groupId stringValue];
-	NSString *parentIdStr = [self.parentId stringValue];
-	
-	NSString *descriptionString = [NSString stringWithFormat:@"Group name: %@, (%@),Group Id: %@, Parent Id: %@", self.name, self.url, groupIdStr, parentIdStr];
-	return descriptionString;
+	NSString *childrenStr = self.children ? [self.children description] : @"";
+	childrenStr = [[childrenStr stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"] stringByReplacingOccurrencesOfString:@"\"" withString:@"''"];
+	NSString *descriptionString = [NSString stringWithFormat:@"Group name: %@, Id: %@; %@", self.name, groupIdStr, childrenStr];
+	return [descriptionString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
 }
 
 @end
