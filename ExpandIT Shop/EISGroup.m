@@ -27,7 +27,7 @@
 	NSString *groupIdStr = [self.groupId stringValue];
 	NSString *parentIdStr = [self.parentId stringValue];
 	
-	NSString *descriptionString = [NSString stringWithFormat:@"Group name: %@, (%@)\n,Group Id: %@, Parent Id: %@", self.name, self.url, groupIdStr, parentIdStr];
+	NSString *descriptionString = [NSString stringWithFormat:@"Group name: %@, (%@),Group Id: %@, Parent Id: %@", self.name, self.url, groupIdStr, parentIdStr];
 	return descriptionString;
 }
 

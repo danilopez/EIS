@@ -15,4 +15,6 @@
 @property (nonatomic, copy) NSNumber *groupId;
 @property (nonatomic, copy) NSNumber *parentId;
 
+- (id)initWithDictionary:(NSDictionary *)dict;
+
 @end
