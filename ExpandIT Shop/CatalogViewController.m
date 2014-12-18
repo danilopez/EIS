@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Daniel Lopez. All rights reserved.
 //
 
-#import "ProductsViewController.h"
+#import "CatalogViewController.h"
 #import "EISGroup.h"
 
 #define API_STRING @"http://wks-dlp-1:53061/api/v1"
 
-@interface ProductsViewController ()
+@interface CatalogViewController ()
 
 @property (nonatomic, strong) NSMutableArray *groups;
 @property (nonatomic, strong) NSMutableArray *groupsInPlain;
@@ -22,7 +22,7 @@
 
 static NSString *Cell = @"Cell";
 
-@implementation ProductsViewController
+@implementation CatalogViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

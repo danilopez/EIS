@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Products-->
+        <!--Catalog-->
         <scene sceneID="B3z-5m-Nn5">
             <objects>
-                <viewController id="91I-Bb-pZM" customClass="ProductsViewController" sceneMemberID="viewController">
+                <viewController id="91I-Bb-pZM" customClass="CatalogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2N3-Xw-Kbz"/>
                         <viewControllerLayoutGuide type="bottom" id="Rhp-Wc-nvf"/>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="IhX-vB-0xB" style="IBUITableViewCellStyleDefault" id="iBH-z9-RR7">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="IhX-vB-0xB" style="IBUITableViewCellStyleDefault" id="iBH-z9-RR7">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iBH-z9-RR7" id="6Ni-vW-TIH">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -43,7 +43,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Products" id="Wmz-nr-QKw"/>
+                    <navigationItem key="navigationItem" title="Catalog" id="Wmz-nr-QKw"/>
                     <connections>
                         <outlet property="tableView" destination="1HO-Kc-THn" id="z0e-YL-4ip"/>
                     </connections>
