@@ -9,6 +9,7 @@
 #import "EISCatalogViewController.h"
 #import "EISGroup.h"
 #import "EISProduct.h"
+#import "EISProductsTableViewController.h"
 
 #define API_STRING @"http://wks-dlp-1:53061/api/v1"
 
@@ -16,8 +17,10 @@
 
 @property (nonatomic, strong) NSMutableArray *groups;
 @property (nonatomic, strong) NSMutableArray *groupsInPlain;
+@property (nonatomic, strong) NSMutableArray *products;
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
+@property (nonatomic, strong) NSString *groupSelected;
 
 @end
 
@@ -74,6 +77,7 @@ static NSString *Cell = @"Cell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSNumber *groupId = [[self.groupsInPlain objectAtIndex:indexPath.row] groupId];
+	self.groupSelected = [[self.groupsInPlain objectAtIndex:indexPath.row] name];
 	[self getProductsOfGroup:groupId];
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -108,18 +112,26 @@ static NSString *Cell = @"Cell";
 		NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 		dispatch_async(dispatch_get_main_queue(), ^{
 			if (results) {
-				NSMutableArray *products = [[NSMutableArray alloc] init];
+				self.products = [[NSMutableArray alloc] init];
 				for (NSDictionary *dict in results) {
 					EISProduct *product = [[EISProduct alloc] initWithDictionary:dict];
-					[products addObject:product];
+					[self.products addObject:product];
 				}
-				NSLog(@"%@",products);
+				[self performSegueWithIdentifier:@"EISProductsTableViewController" sender:self];
 			}
 		});
 	}];
 	
 	if (self.dataTask) {
 		[self.dataTask resume];
+	}
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.destinationViewController isKindOfClass:[EISProductsTableViewController class]]){
+		EISProductsTableViewController *newVC = segue.destinationViewController;
+		newVC.products = self.products;
+		newVC.navigationItem.title = self.groupSelected;
 	}
 }
 

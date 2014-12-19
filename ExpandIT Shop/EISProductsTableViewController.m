@@ -11,8 +11,6 @@
 
 @interface EISProductsTableViewController ()
 
-@property (nonatomic, strong) NSMutableArray *products;
-
 @end
 
 static NSString *identifier = @"ProductCell";

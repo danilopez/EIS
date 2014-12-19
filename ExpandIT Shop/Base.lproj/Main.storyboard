@@ -34,7 +34,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="tPE-bg-QFx" kind="show" id="Noj-ki-Amb"/>
+                                            <segue destination="tPE-bg-QFx" kind="show" identifier="EISProductsTableViewController" id="Noj-ki-Amb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -55,16 +55,16 @@
             </objects>
             <point key="canvasLocation" x="1562" y="-329"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Products Table View Controller-->
         <scene sceneID="Y3i-Ja-c6K">
             <objects>
-                <tableViewController id="tPE-bg-QFx" sceneMemberID="viewController">
+                <tableViewController id="tPE-bg-QFx" customClass="EISProductsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="va5-yF-H8C">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="U6Z-tL-vjs">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ProductCell" id="U6Z-tL-vjs">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U6Z-tL-vjs" id="40t-cR-cFo">
                                     <autoresizingMask key="autoresizingMask"/>

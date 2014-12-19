@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EISProductsTableViewController : UITableViewController
+@interface EISProductsTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) NSMutableArray *products;
 
 @end
