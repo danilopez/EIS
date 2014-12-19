@@ -6,12 +6,13 @@
 //  Copyright (c) 2014 Daniel Lopez. All rights reserved.
 //
 
-#import "CatalogViewController.h"
+#import "EISCatalogViewController.h"
 #import "EISGroup.h"
+#import "EISProduct.h"
 
 #define API_STRING @"http://wks-dlp-1:53061/api/v1"
 
-@interface CatalogViewController ()
+@interface EISCatalogViewController ()
 
 @property (nonatomic, strong) NSMutableArray *groups;
 @property (nonatomic, strong) NSMutableArray *groupsInPlain;
@@ -22,7 +23,7 @@
 
 static NSString *Cell = @"Cell";
 
-@implementation CatalogViewController
+@implementation EISCatalogViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -72,7 +73,9 @@ static NSString *Cell = @"Cell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];	
+	NSNumber *groupId = [[self.groupsInPlain objectAtIndex:indexPath.row] groupId];
+	[self getProductsOfGroup:groupId];
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Session
@@ -84,6 +87,40 @@ static NSString *Cell = @"Cell";
 		_session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
 	}
 	return _session;
+}
+
+- (void)getProductsOfGroup:(NSNumber *)groupId {
+	if (self.dataTask) {
+		[self.dataTask cancel];
+	}
+	
+	NSString *groupIdString = groupId.stringValue;
+	
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/ProductsInGroup?groupId=%@",API_STRING, groupIdString]]];
+	[request setHTTPMethod:@"POST"];
+	[request setTimeoutInterval:30.0f];
+	self.dataTask = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+		if (error) {
+			if (error.code != -999) {
+				NSLog(@"%@", error);
+			}
+		}
+		NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			if (results) {
+				NSMutableArray *products = [[NSMutableArray alloc] init];
+				for (NSDictionary *dict in results) {
+					EISProduct *product = [[EISProduct alloc] initWithDictionary:dict];
+					[products addObject:product];
+				}
+				NSLog(@"%@",products);
+			}
+		});
+	}];
+	
+	if (self.dataTask) {
+		[self.dataTask resume];
+	}
 }
 
 - (void)getAllGroups {

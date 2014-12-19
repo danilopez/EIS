@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CatalogViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface EISCatalogViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 

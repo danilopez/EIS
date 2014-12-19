@@ -14,8 +14,10 @@
 		65300A291A42D02F00327565 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65300A281A42D02F00327565 /* Images.xcassets */; };
 		65300A2C1A42D02F00327565 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65300A2A1A42D02F00327565 /* LaunchScreen.xib */; };
 		65300A381A42D02F00327565 /* ExpandIT_ShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65300A371A42D02F00327565 /* ExpandIT_ShopTests.m */; };
-		65300A441A42D5AD00327565 /* CatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65300A431A42D5AD00327565 /* CatalogViewController.m */; };
+		65300A441A42D5AD00327565 /* EISCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65300A431A42D5AD00327565 /* EISCatalogViewController.m */; };
 		65300A471A42E01B00327565 /* EISGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 65300A461A42E01B00327565 /* EISGroup.m */; };
+		65E3DCCB1A444DA400C14E5F /* EISProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E3DCCA1A444DA400C14E5F /* EISProduct.m */; };
+		65E3DCCE1A445CFC00C14E5F /* EISProductsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E3DCCD1A445CFC00C14E5F /* EISProductsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +44,14 @@
 		65300A311A42D02F00327565 /* ExpandIT ShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ExpandIT ShopTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65300A361A42D02F00327565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65300A371A42D02F00327565 /* ExpandIT_ShopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpandIT_ShopTests.m; sourceTree = "<group>"; };
-		65300A421A42D5AD00327565 /* CatalogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatalogViewController.h; sourceTree = "<group>"; };
-		65300A431A42D5AD00327565 /* CatalogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatalogViewController.m; sourceTree = "<group>"; };
+		65300A421A42D5AD00327565 /* EISCatalogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EISCatalogViewController.h; sourceTree = "<group>"; };
+		65300A431A42D5AD00327565 /* EISCatalogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EISCatalogViewController.m; sourceTree = "<group>"; };
 		65300A451A42E01B00327565 /* EISGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EISGroup.h; sourceTree = "<group>"; };
 		65300A461A42E01B00327565 /* EISGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EISGroup.m; sourceTree = "<group>"; };
+		65E3DCC91A444DA400C14E5F /* EISProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EISProduct.h; sourceTree = "<group>"; };
+		65E3DCCA1A444DA400C14E5F /* EISProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EISProduct.m; sourceTree = "<group>"; };
+		65E3DCCC1A445CFC00C14E5F /* EISProductsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EISProductsTableViewController.h; sourceTree = "<group>"; };
+		65E3DCCD1A445CFC00C14E5F /* EISProductsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EISProductsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,10 +98,14 @@
 				65300A221A42D02F00327565 /* SecondViewController.h */,
 				65300A231A42D02F00327565 /* SecondViewController.m */,
 				65300A251A42D02F00327565 /* Main.storyboard */,
-				65300A421A42D5AD00327565 /* CatalogViewController.h */,
-				65300A431A42D5AD00327565 /* CatalogViewController.m */,
+				65300A421A42D5AD00327565 /* EISCatalogViewController.h */,
+				65300A431A42D5AD00327565 /* EISCatalogViewController.m */,
+				65E3DCCC1A445CFC00C14E5F /* EISProductsTableViewController.h */,
+				65E3DCCD1A445CFC00C14E5F /* EISProductsTableViewController.m */,
 				65300A451A42E01B00327565 /* EISGroup.h */,
 				65300A461A42E01B00327565 /* EISGroup.m */,
+				65E3DCC91A444DA400C14E5F /* EISProduct.h */,
+				65E3DCCA1A444DA400C14E5F /* EISProduct.m */,
 				65300A281A42D02F00327565 /* Images.xcassets */,
 				65300A2A1A42D02F00327565 /* LaunchScreen.xib */,
 				65300A181A42D02F00327565 /* Supporting Files */,
@@ -229,8 +239,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65300A441A42D5AD00327565 /* CatalogViewController.m in Sources */,
+				65300A441A42D5AD00327565 /* EISCatalogViewController.m in Sources */,
+				65E3DCCB1A444DA400C14E5F /* EISProduct.m in Sources */,
 				65300A471A42E01B00327565 /* EISGroup.m in Sources */,
+				65E3DCCE1A445CFC00C14E5F /* EISProductsTableViewController.m in Sources */,
 				65300A241A42D02F00327565 /* SecondViewController.m in Sources */,
 				65300A1E1A42D02F00327565 /* AppDelegate.m in Sources */,
 				65300A1B1A42D02F00327565 /* main.m in Sources */,
@@ -424,6 +436,7 @@
 				65300A3D1A42D02F00327565 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65300A3E1A42D02F00327565 /* Build configuration list for PBXNativeTarget "ExpandIT ShopTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +445,7 @@
 				65300A401A42D02F00327565 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
