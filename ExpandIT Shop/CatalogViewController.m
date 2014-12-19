@@ -27,22 +27,20 @@ static NSString *Cell = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	self.edgesForExtendedLayout=UIRectEdgeNone;
-
 	self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
-	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	
+	// Fix UITableView position under navigation bar and tabBar
+	UIEdgeInsets insets = self.tableView.contentInset;
+	insets.top = self.navigationController.navigationBar.bounds.size.height +
+	[UIApplication sharedApplication].statusBarFrame.size.height;
+	insets.bottom = self.tabBarController.tabBar.bounds.size.height;
+	self.tableView.contentInset = insets;
+	self.tableView.scrollIndicatorInsets = insets;
+	
 	[self.view addSubview:self.tableView];
 	[self getAllGroups];
-	
-//	self.groupsInPlain = [[NSMutableArray alloc] init];
-//	for(int i = 0; i < 20; i++) {
-//		EISGroup *group = [[EISGroup alloc] init];
-//		group.name = [NSString stringWithFormat:@"Product %d",i];
-//		group.indentationLevel = 1;
-//		[self.groupsInPlain addObject:group];
-//	}
 }
 
 - (void)didReceiveMemoryWarning {

@@ -45,7 +45,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Catalog" id="Wmz-nr-QKw"/>
                     <connections>
-                        <outlet property="tableView" destination="1HO-Kc-THn" id="z0e-YL-4ip"/>
+                        <outlet property="tableView" destination="1HO-Kc-THn" id="ue7-RB-MwH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FP4-O6-XBG" userLabel="First Responder" sceneMemberID="firstResponder"/>
