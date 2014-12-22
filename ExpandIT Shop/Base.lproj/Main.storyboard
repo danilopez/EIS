@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Catalog-->
@@ -69,6 +70,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U6Z-tL-vjs" id="40t-cR-cFo">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="KwP-m7-8JU" kind="show" identifier="EISProductDetailViewController" id="pps-n6-3n7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -80,6 +84,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XSj-4B-Iy1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2416" y="-329"/>
+        </scene>
+        <!--Product Detail View Controller-->
+        <scene sceneID="VhY-aC-w9J">
+            <objects>
+                <viewController id="KwP-m7-8JU" customClass="EISProductDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jro-uc-zAT"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fF-j8-DIl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GSd-0y-oWs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZn-zx-E5B">
+                                <rect key="frame" x="16" y="72" width="568" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dZn-zx-E5B" firstAttribute="leading" secondItem="GSd-0y-oWs" secondAttribute="leadingMargin" id="4tp-2L-Jya"/>
+                            <constraint firstItem="dZn-zx-E5B" firstAttribute="top" secondItem="jro-uc-zAT" secondAttribute="bottom" constant="8" id="Yy3-zO-vZE"/>
+                            <constraint firstAttribute="centerX" secondItem="dZn-zx-E5B" secondAttribute="centerX" id="gn6-BB-Eql"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="productNameLabel" destination="dZn-zx-E5B" id="QRV-Yu-Gjv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p1i-I2-IYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3159" y="-329"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">

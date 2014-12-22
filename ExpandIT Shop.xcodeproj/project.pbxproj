@@ -18,7 +18,8 @@
 		65300A471A42E01B00327565 /* EISGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 65300A461A42E01B00327565 /* EISGroup.m */; };
 		65E3DCCB1A444DA400C14E5F /* EISProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E3DCCA1A444DA400C14E5F /* EISProduct.m */; };
 		65E3DCCE1A445CFC00C14E5F /* EISProductsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E3DCCD1A445CFC00C14E5F /* EISProductsTableViewController.m */; };
-		65EA7FD21A4819CE00188BDA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 65EA7FD11A4819CE00188BDA /* README.md */; };
+		65EA7FD51A481BF300188BDA /* EISProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EA7FD41A481BF300188BDA /* EISProductDetailViewController.m */; };
+		65EA7FD61A48205000188BDA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 65EA7FD11A4819CE00188BDA /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		65E3DCCC1A445CFC00C14E5F /* EISProductsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EISProductsTableViewController.h; sourceTree = "<group>"; };
 		65E3DCCD1A445CFC00C14E5F /* EISProductsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EISProductsTableViewController.m; sourceTree = "<group>"; };
 		65EA7FD11A4819CE00188BDA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65EA7FD31A481BF300188BDA /* EISProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EISProductDetailViewController.h; sourceTree = "<group>"; };
+		65EA7FD41A481BF300188BDA /* EISProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EISProductDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				65300A431A42D5AD00327565 /* EISCatalogViewController.m */,
 				65E3DCCC1A445CFC00C14E5F /* EISProductsTableViewController.h */,
 				65E3DCCD1A445CFC00C14E5F /* EISProductsTableViewController.m */,
+				65EA7FD31A481BF300188BDA /* EISProductDetailViewController.h */,
+				65EA7FD41A481BF300188BDA /* EISProductDetailViewController.m */,
 				65300A451A42E01B00327565 /* EISGroup.h */,
 				65300A461A42E01B00327565 /* EISGroup.m */,
 				65E3DCC91A444DA400C14E5F /* EISProduct.h */,
@@ -222,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65EA7FD61A48205000188BDA /* README.md in Resources */,
 				65300A271A42D02F00327565 /* Main.storyboard in Resources */,
 				65300A2C1A42D02F00327565 /* LaunchScreen.xib in Resources */,
 				65300A291A42D02F00327565 /* Images.xcassets in Resources */,
@@ -248,7 +254,7 @@
 				65E3DCCE1A445CFC00C14E5F /* EISProductsTableViewController.m in Sources */,
 				65300A241A42D02F00327565 /* SecondViewController.m in Sources */,
 				65300A1E1A42D02F00327565 /* AppDelegate.m in Sources */,
-				65EA7FD21A4819CE00188BDA /* README.md in Sources */,
+				65EA7FD51A481BF300188BDA /* EISProductDetailViewController.m in Sources */,
 				65300A1B1A42D02F00327565 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

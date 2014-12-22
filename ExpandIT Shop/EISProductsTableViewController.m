@@ -8,6 +8,7 @@
 
 #import "EISProductsTableViewController.h"
 #import "EISProduct.h"
+#import "EISProductDetailViewController.h"
 
 @interface EISProductsTableViewController ()
 
@@ -59,6 +60,10 @@ static NSString *identifier = @"ProductCell";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,14 +98,17 @@ static NSString *identifier = @"ProductCell";
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+	if ([segue.destinationViewController isKindOfClass:[EISProductDetailViewController class]]){
+		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+		EISProduct *product = [self.products objectAtIndex:indexPath.row];
+		EISProductDetailViewController *vc = segue.destinationViewController;
+		vc.theProduct = product;
+	}
 }
-*/
 
 @end
