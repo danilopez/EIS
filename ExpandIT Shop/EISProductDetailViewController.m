@@ -7,25 +7,61 @@
 //
 
 #import "EISProductDetailViewController.h"
+#define BASE_URL @"http://wks-dlp-1:53061"
 
-@interface EISProductDetailViewController ()
+@interface EISProductDetailViewController ()<NSURLSessionDownloadDelegate>
+
 
 @end
 
 @implementation EISProductDetailViewController
 
-@synthesize productNameLabel, theProduct;
+@synthesize productNameLabel, textDescription, picture, theProduct;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	NSString *thePicture = theProduct.picture1;
+	if ([thePicture characterAtIndex:0] != '/') {
+		thePicture = [NSString stringWithFormat:@"/%@",thePicture];
+	}
+	
+	thePicture = [NSString stringWithFormat:@"%@%@",BASE_URL, thePicture];
+	
+	NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+	NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+	
+	NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:thePicture]];
+	[downloadTask resume];
+	
 	productNameLabel.text = theProduct.productName;
+	textDescription.text = theProduct.textDesc;
 	self.navigationItem.title = theProduct.productName;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Session
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
+	UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		self.picture.image = image;
+		[self.picture setContentMode:UIViewContentModeScaleAspectFit];
+		CGRect frame = self.picture.frame;
+		frame.size = image.size;
+		[self.picture setNeedsDisplayInRect:frame];
+	});
+}
+
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes {
+	
+}
+
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
+	
 }
 
 /*

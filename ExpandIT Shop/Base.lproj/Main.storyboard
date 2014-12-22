@@ -94,7 +94,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fF-j8-DIl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="GSd-0y-oWs">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZn-zx-E5B">
@@ -103,16 +103,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRg-Wv-aAF">
+                                <rect key="frame" x="16" y="109" width="568" height="568"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNF-L9-juS">
+                                <rect key="frame" x="16" y="685" width="568" height="458"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="QNF-L9-juS" secondAttribute="centerY" constant="-235" id="4j6-NJ-nJX"/>
                             <constraint firstItem="dZn-zx-E5B" firstAttribute="leading" secondItem="GSd-0y-oWs" secondAttribute="leadingMargin" id="4tp-2L-Jya"/>
+                            <constraint firstItem="hRg-Wv-aAF" firstAttribute="top" secondItem="dZn-zx-E5B" secondAttribute="bottom" constant="8" id="SmJ-FZ-qAf"/>
                             <constraint firstItem="dZn-zx-E5B" firstAttribute="top" secondItem="jro-uc-zAT" secondAttribute="bottom" constant="8" id="Yy3-zO-vZE"/>
+                            <constraint firstItem="hRg-Wv-aAF" firstAttribute="trailing" secondItem="GSd-0y-oWs" secondAttribute="trailingMargin" id="e3R-wk-RQm"/>
                             <constraint firstAttribute="centerX" secondItem="dZn-zx-E5B" secondAttribute="centerX" id="gn6-BB-Eql"/>
+                            <constraint firstItem="QNF-L9-juS" firstAttribute="top" secondItem="hRg-Wv-aAF" secondAttribute="bottom" constant="8" id="iuF-vL-x3d"/>
+                            <constraint firstItem="QNF-L9-juS" firstAttribute="leading" secondItem="GSd-0y-oWs" secondAttribute="leadingMargin" id="opg-kq-ser"/>
+                            <constraint firstItem="hRg-Wv-aAF" firstAttribute="leading" secondItem="GSd-0y-oWs" secondAttribute="leadingMargin" id="uXf-w8-9Fw"/>
+                            <constraint firstItem="2fF-j8-DIl" firstAttribute="top" secondItem="QNF-L9-juS" secondAttribute="bottom" constant="8" id="ubv-j2-3WC"/>
+                            <constraint firstItem="QNF-L9-juS" firstAttribute="trailing" secondItem="GSd-0y-oWs" secondAttribute="trailingMargin" id="y8q-3G-qKP"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="1200"/>
                     <connections>
+                        <outlet property="picture" destination="hRg-Wv-aAF" id="8D9-hE-aAm"/>
                         <outlet property="productNameLabel" destination="dZn-zx-E5B" id="QRV-Yu-Gjv"/>
+                        <outlet property="textDescription" destination="QNF-L9-juS" id="YEf-WM-ZLU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1i-I2-IYY" userLabel="First Responder" sceneMemberID="firstResponder"/>

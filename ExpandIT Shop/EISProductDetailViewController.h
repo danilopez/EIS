@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "EISProduct.h"
 
-@interface EISProductDetailViewController : UIViewController
+@interface EISProductDetailViewController : UIViewController<UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *productNameLabel;
+@property (strong, nonatomic) IBOutlet UITextView *textDescription;
+@property (strong, nonatomic) IBOutlet UIImageView *picture;
 @property (strong, nonatomic) EISProduct *theProduct;
 
 @end
