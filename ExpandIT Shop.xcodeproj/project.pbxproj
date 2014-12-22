@@ -18,6 +18,7 @@
 		65300A471A42E01B00327565 /* EISGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 65300A461A42E01B00327565 /* EISGroup.m */; };
 		65E3DCCB1A444DA400C14E5F /* EISProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E3DCCA1A444DA400C14E5F /* EISProduct.m */; };
 		65E3DCCE1A445CFC00C14E5F /* EISProductsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E3DCCD1A445CFC00C14E5F /* EISProductsTableViewController.m */; };
+		65EA7FD21A4819CE00188BDA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 65EA7FD11A4819CE00188BDA /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		65E3DCCA1A444DA400C14E5F /* EISProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EISProduct.m; sourceTree = "<group>"; };
 		65E3DCCC1A445CFC00C14E5F /* EISProductsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EISProductsTableViewController.h; sourceTree = "<group>"; };
 		65E3DCCD1A445CFC00C14E5F /* EISProductsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EISProductsTableViewController.m; sourceTree = "<group>"; };
+		65EA7FD11A4819CE00188BDA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		65300A0C1A42D02E00327565 = {
 			isa = PBXGroup;
 			children = (
+				65EA7FD11A4819CE00188BDA /* README.md */,
 				65300A171A42D02F00327565 /* ExpandIT Shop */,
 				65300A341A42D02F00327565 /* ExpandIT ShopTests */,
 				65300A161A42D02F00327565 /* Products */,
@@ -245,6 +248,7 @@
 				65E3DCCE1A445CFC00C14E5F /* EISProductsTableViewController.m in Sources */,
 				65300A241A42D02F00327565 /* SecondViewController.m in Sources */,
 				65300A1E1A42D02F00327565 /* AppDelegate.m in Sources */,
+				65EA7FD21A4819CE00188BDA /* README.md in Sources */,
 				65300A1B1A42D02F00327565 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
