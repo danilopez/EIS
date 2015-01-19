@@ -16,7 +16,7 @@
 
 @implementation EISProductDetailViewController
 
-@synthesize productNameLabel, textDescription, picture, theProduct;
+@synthesize textDescription, picture, theProduct;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,7 +34,6 @@
 	NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:thePicture]];
 	[downloadTask resume];
 	
-    productNameLabel.text = theProduct.productName;
 	textDescription.text = theProduct.textDesc;
 	self.navigationItem.title = theProduct.productName;
 }
