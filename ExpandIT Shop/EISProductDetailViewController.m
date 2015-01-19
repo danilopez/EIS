@@ -7,7 +7,7 @@
 //
 
 #import "EISProductDetailViewController.h"
-#define BASE_URL @"http://wks-dlp-1:53061"
+#define BASE_URL @"http://demo2.expandit.com/daniel-master-project"
 
 @interface EISProductDetailViewController ()<NSURLSessionDownloadDelegate>
 
@@ -34,7 +34,7 @@
 	NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:thePicture]];
 	[downloadTask resume];
 	
-	productNameLabel.text = theProduct.productName;
+    productNameLabel.text = theProduct.productName;
 	textDescription.text = theProduct.textDesc;
 	self.navigationItem.title = theProduct.productName;
 }

@@ -11,7 +11,7 @@
 #import "EISProduct.h"
 #import "EISProductsTableViewController.h"
 
-#define API_STRING @"http://wks-dlp-1:53061/api/v1"
+#define API_STRING @"http://demo2.expandit.com/daniel-master-project/api/v1"
 
 @interface EISCatalogViewController ()
 
