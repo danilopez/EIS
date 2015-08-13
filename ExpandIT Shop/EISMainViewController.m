@@ -61,11 +61,10 @@
             return;
         }
         NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.theProduct = [[EISProduct alloc] initWithDictionary:results];
-            NSLog(@"Product Name: %@",self.theProduct.productName);
-            [self performSegueWithIdentifier:@"Detail" sender:nil];
-        });
+        self.theProduct = [[EISProduct alloc] initWithDictionary:results];
+        NSLog(@"Product Name: %@",self.theProduct.productName);
+        [self performSegueWithIdentifier:@"Detail" sender:nil];
+
     }];
     
     if (self.dataTask)
