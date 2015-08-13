@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zmr-l8-1qc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Product Detail View Controller-->
@@ -16,28 +17,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4z-Ag-qSC">
-                                <rect key="frame" x="279" y="289" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2E-MB-qYq">
+                                <rect key="frame" x="16" y="72" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="PriceLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="278-I4-Bmo">
+                                <rect key="frame" x="68" y="72" width="516" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMD-9F-m8M">
+                                <rect key="frame" x="16" y="101" width="568" height="300"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="i4z-Ag-qSC" secondAttribute="centerX" id="9yf-T9-a5F"/>
-                            <constraint firstAttribute="centerY" secondItem="i4z-Ag-qSC" secondAttribute="centerY" id="eRC-pZ-JwW"/>
+                            <constraint firstItem="oMD-9F-m8M" firstAttribute="leading" secondItem="GSd-0y-oWs" secondAttribute="leadingMargin" id="7g0-zK-63y"/>
+                            <constraint firstItem="t2E-MB-qYq" firstAttribute="top" secondItem="jro-uc-zAT" secondAttribute="bottom" constant="8" id="SHE-ZT-xC1"/>
+                            <constraint firstItem="oMD-9F-m8M" firstAttribute="top" secondItem="t2E-MB-qYq" secondAttribute="bottom" constant="8" id="bgz-Ij-m2F"/>
+                            <constraint firstItem="oMD-9F-m8M" firstAttribute="trailing" secondItem="GSd-0y-oWs" secondAttribute="trailingMargin" id="jlg-AB-luM"/>
+                            <constraint firstItem="t2E-MB-qYq" firstAttribute="leading" secondItem="GSd-0y-oWs" secondAttribute="leadingMargin" id="lui-Zo-wda"/>
+                            <constraint firstItem="278-I4-Bmo" firstAttribute="leading" secondItem="t2E-MB-qYq" secondAttribute="trailing" constant="8" id="sAh-C8-sh4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qy1-bP-PyB"/>
                     <connections>
-                        <outlet property="ProductName" destination="i4z-Ag-qSC" id="8hs-HM-FE1"/>
-                        <outlet property="productName" destination="i4z-Ag-qSC" id="cA7-N0-FaZ"/>
+                        <outlet property="textDescription" destination="oMD-9F-m8M" id="OOU-nH-UC4"/>
+                        <outlet property="totalInclTaxLabel" destination="278-I4-Bmo" id="wwr-jQ-xhN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1i-I2-IYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5724" y="-76"/>
+            <point key="canvasLocation" x="4822" y="-76"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="PmS-MI-vAl">
@@ -91,7 +108,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5mc-Hd-92C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4621" y="-76"/>
+            <point key="canvasLocation" x="4077" y="-76"/>
         </scene>
     </scenes>
 </document>

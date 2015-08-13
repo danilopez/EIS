@@ -52,8 +52,4 @@ totalInclTax;
 	return self;
 }
 
-- (NSString *)description {
-	return [NSString stringWithFormat:@"%@",self.productName];
-}
-
 @end

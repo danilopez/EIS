@@ -62,7 +62,6 @@
         }
         NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         self.theProduct = [[EISProduct alloc] initWithDictionary:results];
-        NSLog(@"Product Name: %@",self.theProduct.productName);
         [self performSegueWithIdentifier:@"Detail" sender:nil];
 
     }];

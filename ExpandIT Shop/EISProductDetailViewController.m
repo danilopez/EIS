@@ -7,7 +7,9 @@
 //
 
 #import "EISProductDetailViewController.h"
+
 #define BASE_URL @"http://demo2.expandit.com/daniel-master-project"
+#define kMaxHeight 200.f
 
 @interface EISProductDetailViewController ()<NSURLSessionDownloadDelegate>
 
@@ -16,28 +18,34 @@
 
 @implementation EISProductDetailViewController
 
-@synthesize textDescription, picture, theProduct, productName;
+@synthesize textDescription, picture, theProduct, totalInclTaxLabel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	NSString *thePicture = theProduct.picture1;
-	if ([thePicture characterAtIndex:0] != '/') {
-		thePicture = [NSString stringWithFormat:@"/%@",thePicture];
-	}
-	
-	thePicture = [NSString stringWithFormat:@"%@%@",BASE_URL, thePicture];
-	
-	NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-	NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
-	
-	NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:thePicture]];
-	[downloadTask resume];
+//	NSString *thePicture = theProduct.picture1;
+//	if ([thePicture characterAtIndex:0] != '/') {
+//		thePicture = [NSString stringWithFormat:@"/%@",thePicture];
+//	}
+//	
+//	thePicture = [NSString stringWithFormat:@"%@%@",BASE_URL, thePicture];
+//	
+//	NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+//	NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+//	
+//	NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:thePicture]];
+//	[downloadTask resume];
 	
 	textDescription.text = theProduct.description;
+    [textDescription sizeToFit];
+    
 	self.navigationItem.title = theProduct.productName;
-    productName.text = theProduct.productName;
+    totalInclTaxLabel.text = theProduct.totalInclTax.stringValue;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    return [super viewWillAppear:animated];
 }
 
 - (void)doneButtonPressed {
