@@ -34,7 +34,7 @@
 }
 
 - (IBAction)GetInfoButton:(id)sender {
-    [self getProduct:@"1000"];
+    [self getProduct:@"8102-05"];
 }
 
 #pragma mark - Session
