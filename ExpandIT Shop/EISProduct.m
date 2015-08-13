@@ -65,7 +65,7 @@ language;
 		parentGuid = [[dict objectForKey:@"Properties"]
 					   objectForKey:@"parentGuid"];
 		productGuid = [dict objectForKey:@"ProductGuid"];
-		productName = [dict objectForKey:@"ProductName"];
+		productName = [[[[dict objectForKey:@"ProductInfoNodes"] objectAtIndex:0] objectForKey:@"Prod"] objectForKey:@"ProductName"];
 		language = [[[dict objectForKey:@"Properties"]
 					 objectForKey:@"PropDict"]
 					objectForKey:@"_DESCRIPTION"];

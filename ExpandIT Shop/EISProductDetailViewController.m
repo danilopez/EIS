@@ -16,7 +16,7 @@
 
 @implementation EISProductDetailViewController
 
-@synthesize textDescription, picture, theProduct;
+@synthesize textDescription, picture, theProduct, productName;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,6 +36,7 @@
 	
 	textDescription.text = theProduct.textDesc;
 	self.navigationItem.title = theProduct.productName;
+    productName.text = theProduct.productName;
 }
 
 - (void)didReceiveMemoryWarning {
