@@ -37,6 +37,11 @@
 	textDescription.text = theProduct.description;
 	self.navigationItem.title = theProduct.productName;
     productName.text = theProduct.productName;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
+}
+
+- (void)doneButtonPressed {
+    [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
