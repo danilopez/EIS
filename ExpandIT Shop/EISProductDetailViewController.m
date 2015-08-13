@@ -23,18 +23,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//	NSString *thePicture = theProduct.picture1;
-//	if ([thePicture characterAtIndex:0] != '/') {
-//		thePicture = [NSString stringWithFormat:@"/%@",thePicture];
-//	}
-//	
-//	thePicture = [NSString stringWithFormat:@"%@%@",BASE_URL, thePicture];
-//	
-//	NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-//	NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
-//	
-//	NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:thePicture]];
-//	[downloadTask resume];
+	NSString *thePicture = theProduct.picture1;
+	if ([thePicture characterAtIndex:0] != '/') {
+		thePicture = [NSString stringWithFormat:@"/%@",thePicture];
+	}
+	
+	thePicture = [NSString stringWithFormat:@"%@%@",BASE_URL, thePicture];
+	
+	NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+	NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+	
+	NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:thePicture]];
+	[downloadTask resume];
 	
 	textDescription.text = theProduct.description;
     [textDescription sizeToFit];
