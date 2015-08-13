@@ -34,7 +34,7 @@
 	NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:thePicture]];
 	[downloadTask resume];
 	
-	textDescription.text = theProduct.textDesc;
+	textDescription.text = theProduct.description;
 	self.navigationItem.title = theProduct.productName;
     productName.text = theProduct.productName;
 }

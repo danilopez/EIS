@@ -10,12 +10,8 @@
 
 @implementation EISProduct
 
-@synthesize groupGuid,
-groupProductGuid,
-alias,
-attachment,
-attachText,
-textDesc,
+@synthesize
+description,
 htmlDesc,
 hyperlink,
 linkText,
@@ -25,50 +21,33 @@ pageTemplate,
 parentGuid,
 productGuid,
 productName,
-language;
+language,
+listPrice,
+productGrp,
+currencyGuid,
+totalInclTax;
 
 - (id)initWithDictionary:(NSDictionary *)dict {
 	self = [super init];
 	if (self) {
-		groupGuid = [dict objectForKey:@"GroupGuid"];
-		groupProductGuid = [dict objectForKey:@"GroupProductGuid"];
-		alias = [[[dict objectForKey:@"Properties"]
-						objectForKey:@"PropDict"]
-						objectForKey:@"ALIAS"];
-		attachment = [[[dict objectForKey:@"Properties"]
-					   objectForKey:@"PropDict"]
-					  objectForKey:@"ATTACHMENT"];
-		attachText = [[[dict objectForKey:@"Properties"]
-					   objectForKey:@"PropDict"]
-					  objectForKey:@"ATTACHTEXT"];
-		textDesc = [[[dict objectForKey:@"Properties"]
-						objectForKey:@"PropDict"]
-					objectForKey:@"DESCRIPTION"];
-		htmlDesc = [[[dict objectForKey:@"Properties"]
-						objectForKey:@"PropDict"]
-					objectForKey:@"HTMLDESC"];
-		hyperlink = [[[dict objectForKey:@"Properties"]
-					  objectForKey:@"PropDict"]
-						objectForKey:@"HYPERLINK"];
-		linkText = [[[dict objectForKey:@"Properties"]
-						objectForKey:@"PropDict"]
-					objectForKey:@"LINKTEXT"];
-		picture1 = [[[dict objectForKey:@"Properties"]
-						objectForKey:@"PropDict"]
-					objectForKey:@"PICTURE1"];
-		picture2 = [[[dict objectForKey:@"Properties"]
-						objectForKey:@"PropDict"]
-					objectForKey:@"PICTURE2"];
-		pageTemplate = [[[dict objectForKey:@"Properties"]
-						 objectForKey:@"PropDict"]
-						objectForKey:@"TEMPLATE"];
-		parentGuid = [[dict objectForKey:@"Properties"]
-					   objectForKey:@"parentGuid"];
-		productGuid = [dict objectForKey:@"ProductGuid"];
-		productName = [[[[dict objectForKey:@"ProductInfoNodes"] objectAtIndex:0] objectForKey:@"Prod"] objectForKey:@"ProductName"];
-		language = [[[dict objectForKey:@"Properties"]
-					 objectForKey:@"PropDict"]
-					objectForKey:@"_DESCRIPTION"];
+        NSDictionary *prod = [[[dict objectForKey:@"ProductInfoNodes"] objectAtIndex:0] objectForKey:@"Prod"];
+        NSDictionary *propDict = [[prod objectForKey:@"Properties"] objectForKey:@"PropDict"];
+        NSDictionary *line = [[[dict objectForKey:@"ProductInfoNodes"] objectAtIndex:0] objectForKey:@"Line"];
+        
+		description =   [propDict objectForKey:@"DESCRIPTION"];
+		htmlDesc =      [propDict objectForKey:@"HTMLDESC"];
+		hyperlink =     [propDict objectForKey:@"HYPERLINK"];
+		linkText =      [propDict objectForKey:@"LINKTEXT"];
+		picture1 =      [propDict objectForKey:@"PICTURE1"];
+		picture2 =      [propDict objectForKey:@"PICTURE2"];
+		parentGuid =    [[prod objectForKey:@"Properties"] objectForKey:@"parentGuid"];
+		productGuid =   [prod objectForKey:@"ProductGuid"];
+		productName =   [prod objectForKey:@"ProductName"];
+		language =      [propDict objectForKey:@"_DESCRIPTION"];
+        listPrice =     [prod objectForKey:@"ListPrice"];
+        productGrp =    [prod objectForKey:@"ProductGrp"];
+        currencyGuid =  [line objectForKey:@"CurrencyGuid"];
+        totalInclTax =  [line objectForKey:@"TotalInclTax"];
 	}
 	return self;
 }

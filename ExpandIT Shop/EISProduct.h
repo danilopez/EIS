@@ -10,12 +10,7 @@
 
 @interface EISProduct : NSObject
 
-@property (nonatomic, strong) NSNumber *groupGuid;
-@property (nonatomic, strong) NSNumber *groupProductGuid;
-@property (nonatomic, strong) NSString *alias;
-@property (nonatomic, strong) NSString *attachment;
-@property (nonatomic, strong) NSString *attachText;
-@property (nonatomic, strong) NSString *textDesc;
+@property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSString *htmlDesc;
 @property (nonatomic, strong) NSString *hyperlink;
 @property (nonatomic, strong) NSString *linkText;
@@ -26,6 +21,10 @@
 @property (nonatomic, strong) NSString *productGuid;
 @property (nonatomic, strong) NSString *productName;
 @property (nonatomic, strong) NSString *language;
+@property (nonatomic, strong) NSNumber *listPrice;
+@property (nonatomic, strong) NSString *productGrp;
+@property (nonatomic, strong) NSString *currencyGuid;
+@property (nonatomic, strong) NSNumber *totalInclTax;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 
