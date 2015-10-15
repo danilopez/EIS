@@ -155,8 +155,7 @@
     [self stopRunning];
     NSLog(@"Barcode found: %@", barcode.getBarcodeData);
     // Do something
-    [self showBarcodeAlert:barcode];
-    
+    [self getProduct:barcode.getBarcodeData];
 }
 
 - (void) showBarcodeAlert:(Barcode *)barcode{
@@ -193,6 +192,25 @@
     return _session;
 }
 
+- (void)productNotFoundError {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Product not found"
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self startRunning];
+                                                          }];
+    
+    [alert addAction:defaultAction];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Code to update the UI/send notifications based on the results of the background processing
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    });
+}
+
 - (void)getProduct:(NSString *)productGuid {
     if (self.dataTask)
         [self.dataTask cancel];
@@ -204,12 +222,16 @@
     self.dataTask = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error && error.code != -999) {
             NSLog(@"Error on REQUEST: %@",error);
+            [self productNotFoundError];
             return;
         }
         NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        self.theProduct = [[EISProduct alloc] initWithDictionary:results];
-        [self performSegueWithIdentifier:@"Detail" sender:nil];
-
+        if (results == nil)
+            [self productNotFoundError];
+        else {
+            self.theProduct = [[EISProduct alloc] initWithDictionary:results];
+            [self performSegueWithIdentifier:@"Detail" sender:nil];
+        }
     }];
     
     if (self.dataTask)
