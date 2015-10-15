@@ -9,23 +9,60 @@
 #import "EISMainViewController.h"
 #import "EISProductDetailViewController.h"
 #import "EISProduct.h"
+#import "Barcode.h"
+
+@import AVFoundation;
 
 #define API_STRING @"http://demo2.expandit.com/daniel-master-project/api/v1"
 #define BASE_URL @"http://demo2.expandit.com/daniel-master-project"
 
-@interface EISMainViewController ()
+@interface EISMainViewController () <AVCaptureMetadataOutputObjectsDelegate>
 
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
 @property (nonatomic, strong) EISProduct *theProduct;
+@property (nonatomic, weak) IBOutlet UIView *previewView;
+@property (nonatomic, strong) NSMutableArray *allowedBarcodeTypes;
 
 @end
 
-@implementation EISMainViewController
+@implementation EISMainViewController {
+    AVCaptureDevice *_videoDevice;
+    AVCaptureSession *_captureSession;
+    AVCaptureDeviceInput *_videoInput;
+    AVCaptureVideoPreviewLayer *_previewLayer;
+    BOOL _running;
+    AVCaptureMetadataOutput *_metadataOutput;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
+    
+    [self setupCaptureSession];
+    _previewLayer.frame = _previewView.bounds;
+    [_previewView.layer addSublayer:_previewLayer];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(applicationWillEnterForeground:)
+     name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(applicationDidEnterBackground:)
+     name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    self.allowedBarcodeTypes = [NSMutableArray new];
+    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeQRCode];
+    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypePDF417Code];
+    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeUPCECode];
+    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeAztecCode];
+    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeCode39Code];
+    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeCode39Mod43Code];
+    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeEAN13Code];
+    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeEAN8Code];
+    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeCode93Code];
+    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeCode128Code];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,8 +70,117 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)GetInfoButton:(id)sender {
-    [self getProduct:@"8102-05"];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self startRunning];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self stopRunning];
+}
+
+
+#pragma mark - AVFoundation setup
+- (void) setupCaptureSession {
+    if (_captureSession) return;
+    
+    _videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    if (!_videoDevice) {
+        NSLog(@"No video camera on this device!");
+        return;
+    }
+    
+    _captureSession = [[AVCaptureSession alloc] init];
+    _videoInput = [[AVCaptureDeviceInput alloc] initWithDevice:_videoDevice error:nil];
+    
+    if ([_captureSession canAddInput:_videoInput])
+        [_captureSession addInput:_videoInput];
+    
+    _previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
+    _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    
+    _metadataOutput = [[AVCaptureMetadataOutput alloc] init];
+    dispatch_queue_t metadataQueue = dispatch_queue_create("com.expandit.metadata", 0);
+    [_metadataOutput setMetadataObjectsDelegate:self queue:metadataQueue];
+    
+    if ([_captureSession canAddOutput:_metadataOutput])
+        [_captureSession addOutput:_metadataOutput];
+}
+
+- (void) startRunning {
+    if (_running) return;
+    [_captureSession startRunning];
+    _metadataOutput.metadataObjectTypes = _metadataOutput.availableMetadataObjectTypes;
+    _running = YES;
+}
+
+- (void) stopRunning {
+    if (!_running) return;
+    [_captureSession stopRunning];
+    _running = NO;
+}
+
+- (void) applicationWillEnterForeground:(NSNotification *)note {
+    [self startRunning];
+}
+
+- (void) applicationDidEnterBackground:(NSNotification *)note {
+    [self stopRunning];
+}
+
+#pragma mark - Delegate functions
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
+    [metadataObjects enumerateObjectsUsingBlock:^(AVMetadataObject *obj, NSUInteger index, BOOL *stop) {
+        if ([obj isKindOfClass:[AVMetadataMachineReadableCodeObject class]]) {
+            AVMetadataMachineReadableCodeObject *code = (AVMetadataMachineReadableCodeObject *)[_previewLayer transformedMetadataObjectForMetadataObject:obj];
+            
+            Barcode *barcode = [Barcode processMetadataObject:code];
+            for (NSString *str in self.allowedBarcodeTypes) {
+                if ([barcode.getBarcodeType isEqualToString:str]) {
+                    [self validBarcodefound:barcode];
+                    return;
+                }
+            }
+        }
+    }];
+}
+
+- (void)validBarcodefound:(Barcode *)barcode {
+    [self stopRunning];
+    NSLog(@"Barcode found: %@", barcode.getBarcodeData);
+    // Do something
+    [self showBarcodeAlert:barcode];
+    
+}
+
+- (void) showBarcodeAlert:(Barcode *)barcode{
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // Code to do in background processing
+        NSString * alertMessage = [barcode getBarcodeData];
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Barcode found!"
+                                                                       message:alertMessage
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {
+                                                                  [self startRunning];
+                                                              }];
+        
+        [alert addAction:defaultAction];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Code to update the UI/send notifications based on the results of the background processing
+        [self presentViewController:alert animated:YES completion:nil];
+            
+        });
+    });
 }
 
 #pragma mark - Session

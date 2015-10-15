@@ -10,6 +10,5 @@
 
 @interface EISMainViewController : UIViewController
 
-- (IBAction)GetInfoButton:(id)sender;
-
 @end
+
