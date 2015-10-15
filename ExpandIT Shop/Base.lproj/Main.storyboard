@@ -44,8 +44,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IpK-Yr-oEo">
-                                                <rect key="frame" x="8" y="185" width="584" height="283"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IpK-Yr-oEo">
+                                                <rect key="frame" x="0.0" y="185" width="600" height="415"/>
                                                 <animations/>
                                             </imageView>
                                         </subviews>
@@ -54,16 +54,18 @@
                                         <constraints>
                                             <constraint firstItem="GD5-SW-TPM" firstAttribute="top" secondItem="K7y-0s-L5M" secondAttribute="bottom" constant="8" id="0dZ-ku-yQs"/>
                                             <constraint firstItem="K7y-0s-L5M" firstAttribute="top" secondItem="Qqj-ea-7Vp" secondAttribute="top" constant="8" id="5Jg-ed-rim"/>
-                                            <constraint firstAttribute="trailing" secondItem="IpK-Yr-oEo" secondAttribute="trailing" constant="8" id="9Mz-yZ-OER"/>
-                                            <constraint firstItem="IpK-Yr-oEo" firstAttribute="top" secondItem="GD5-SW-TPM" secondAttribute="bottom" constant="8" id="A69-ne-BAa"/>
+                                            <constraint firstAttribute="trailing" secondItem="IpK-Yr-oEo" secondAttribute="trailing" id="9Mz-yZ-OER"/>
+                                            <constraint firstItem="IpK-Yr-oEo" firstAttribute="top" secondItem="GD5-SW-TPM" secondAttribute="bottom" constant="15" id="A69-ne-BAa"/>
                                             <constraint firstAttribute="trailing" secondItem="TG5-Ib-y7z" secondAttribute="trailing" constant="8" id="CqO-GX-3Q9"/>
-                                            <constraint firstItem="IpK-Yr-oEo" firstAttribute="width" secondItem="GD5-SW-TPM" secondAttribute="width" id="KSE-TH-KOZ"/>
+                                            <constraint firstItem="IpK-Yr-oEo" firstAttribute="width" secondItem="GD5-SW-TPM" secondAttribute="width" constant="16" id="KSE-TH-KOZ"/>
                                             <constraint firstItem="GD5-SW-TPM" firstAttribute="leading" secondItem="Qqj-ea-7Vp" secondAttribute="leading" constant="8" id="LJY-NS-IS3"/>
                                             <constraint firstItem="TG5-Ib-y7z" firstAttribute="leading" secondItem="K7y-0s-L5M" secondAttribute="trailing" constant="8" id="Lup-pd-zi0"/>
                                             <constraint firstItem="TG5-Ib-y7z" firstAttribute="top" secondItem="Qqj-ea-7Vp" secondAttribute="top" constant="8" id="YAo-3m-YMR"/>
                                             <constraint firstItem="K7y-0s-L5M" firstAttribute="leading" secondItem="Qqj-ea-7Vp" secondAttribute="leading" constant="8" id="aPc-NE-z4K"/>
+                                            <constraint firstAttribute="bottom" secondItem="IpK-Yr-oEo" secondAttribute="bottom" id="bMy-EL-rJR"/>
                                             <constraint firstAttribute="trailing" secondItem="GD5-SW-TPM" secondAttribute="trailing" constant="8" id="fvW-Wx-b4e"/>
-                                            <constraint firstItem="IpK-Yr-oEo" firstAttribute="leading" secondItem="Qqj-ea-7Vp" secondAttribute="leading" constant="8" id="ncU-6G-2Aq"/>
+                                            <constraint firstItem="IpK-Yr-oEo" firstAttribute="leading" secondItem="Qqj-ea-7Vp" secondAttribute="leading" id="ncU-6G-2Aq"/>
+                                            <constraint firstAttribute="bottom" secondItem="IpK-Yr-oEo" secondAttribute="bottom" id="pnn-rW-Ky8"/>
                                         </constraints>
                                     </view>
                                 </subviews>
