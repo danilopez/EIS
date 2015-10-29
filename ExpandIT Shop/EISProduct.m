@@ -25,7 +25,8 @@ language,
 listPrice,
 productGrp,
 currencyGuid,
-totalInclTax;
+totalInclTax,
+stock;
 
 - (id)initWithDictionary:(NSDictionary *)dict {
 	self = [super init];
@@ -48,6 +49,8 @@ totalInclTax;
         productGrp =    [prod objectForKey:@"ProductGrp"];
         currencyGuid =  [line objectForKey:@"CurrencyGuid"];
         totalInclTax =  [line objectForKey:@"TotalInclTax"];
+        stock =         [prod objectForKey:@"Stock"];
+        
 	}
 	return self;
 }

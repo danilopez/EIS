@@ -29,6 +29,13 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Stock:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wm-1q-wxH">
+                                                <rect key="frame" x="8" y="37" width="49" height="21"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="listPrice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TG5-Ib-y7z">
                                                 <rect key="frame" x="60" y="8" width="532" height="21"/>
                                                 <animations/>
@@ -37,25 +44,33 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GD5-SW-TPM">
-                                                <rect key="frame" x="8" y="37" width="584" height="133"/>
+                                                <rect key="frame" x="8" y="66" width="584" height="133"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IpK-Yr-oEo">
-                                                <rect key="frame" x="0.0" y="185" width="600" height="415"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IpK-Yr-oEo">
+                                                <rect key="frame" x="0.0" y="207" width="600" height="415"/>
                                                 <animations/>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="stockLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxd-ob-5sE">
+                                                <rect key="frame" x="60" y="37" width="532" height="21"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="GD5-SW-TPM" firstAttribute="top" secondItem="K7y-0s-L5M" secondAttribute="bottom" constant="8" id="0dZ-ku-yQs"/>
                                             <constraint firstItem="K7y-0s-L5M" firstAttribute="top" secondItem="Qqj-ea-7Vp" secondAttribute="top" constant="8" id="5Jg-ed-rim"/>
                                             <constraint firstAttribute="trailing" secondItem="IpK-Yr-oEo" secondAttribute="trailing" id="9Mz-yZ-OER"/>
                                             <constraint firstItem="IpK-Yr-oEo" firstAttribute="top" secondItem="GD5-SW-TPM" secondAttribute="bottom" constant="15" id="A69-ne-BAa"/>
+                                            <constraint firstAttribute="trailing" secondItem="lxd-ob-5sE" secondAttribute="trailing" constant="8" id="Blo-KB-i8g"/>
+                                            <constraint firstItem="GD5-SW-TPM" firstAttribute="top" secondItem="4Wm-1q-wxH" secondAttribute="bottom" constant="8" id="CJs-Bg-kMC"/>
                                             <constraint firstAttribute="trailing" secondItem="TG5-Ib-y7z" secondAttribute="trailing" constant="8" id="CqO-GX-3Q9"/>
                                             <constraint firstItem="IpK-Yr-oEo" firstAttribute="width" secondItem="GD5-SW-TPM" secondAttribute="width" constant="16" id="KSE-TH-KOZ"/>
                                             <constraint firstItem="GD5-SW-TPM" firstAttribute="leading" secondItem="Qqj-ea-7Vp" secondAttribute="leading" constant="8" id="LJY-NS-IS3"/>
@@ -63,7 +78,9 @@
                                             <constraint firstItem="TG5-Ib-y7z" firstAttribute="top" secondItem="Qqj-ea-7Vp" secondAttribute="top" constant="8" id="YAo-3m-YMR"/>
                                             <constraint firstItem="K7y-0s-L5M" firstAttribute="leading" secondItem="Qqj-ea-7Vp" secondAttribute="leading" constant="8" id="aPc-NE-z4K"/>
                                             <constraint firstAttribute="bottom" secondItem="IpK-Yr-oEo" secondAttribute="bottom" id="bMy-EL-rJR"/>
+                                            <constraint firstItem="lxd-ob-5sE" firstAttribute="leading" secondItem="4Wm-1q-wxH" secondAttribute="trailing" constant="3" id="bT8-K5-Fc4"/>
                                             <constraint firstAttribute="trailing" secondItem="GD5-SW-TPM" secondAttribute="trailing" constant="8" id="fvW-Wx-b4e"/>
+                                            <constraint firstItem="4Wm-1q-wxH" firstAttribute="top" secondItem="K7y-0s-L5M" secondAttribute="bottom" constant="8" id="gDn-bU-je7"/>
                                             <constraint firstItem="IpK-Yr-oEo" firstAttribute="leading" secondItem="Qqj-ea-7Vp" secondAttribute="leading" id="ncU-6G-2Aq"/>
                                             <constraint firstAttribute="bottom" secondItem="IpK-Yr-oEo" secondAttribute="bottom" id="pnn-rW-Ky8"/>
                                         </constraints>
@@ -91,15 +108,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="qy1-bP-PyB"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="picture" destination="IpK-Yr-oEo" id="Y60-ei-pRE"/>
+                        <outlet property="stockLabel" destination="lxd-ob-5sE" id="ihT-Dz-UcE"/>
                         <outlet property="textDescription" destination="GD5-SW-TPM" id="mad-Ub-pQC"/>
                         <outlet property="totalInclTaxLabel" destination="TG5-Ib-y7z" id="8lT-Nf-33w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1i-I2-IYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4822" y="-76"/>
+            <point key="canvasLocation" x="4854" y="-76"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="PmS-MI-vAl">
