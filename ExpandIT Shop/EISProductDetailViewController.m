@@ -41,6 +41,7 @@
 	self.navigationItem.title = theProduct.productName;
     totalInclTaxLabel.text = theProduct.totalInclTax.stringValue;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
+    self.stockLabel.text = [NSString stringWithFormat:@"%@",theProduct.stock];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
