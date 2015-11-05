@@ -25,7 +25,7 @@ language,
 listPrice,
 productGrp,
 currencyGuid,
-totalInclTax;
+totalInclTax,
 stock;
 
 - (id)initWithDictionary:(NSDictionary *)dict {
