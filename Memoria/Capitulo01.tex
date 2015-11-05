@@ -74,10 +74,36 @@ Esta fue la última versión en la que Scott Forstall trabajó como vicepresiden
 \subsection{iOS 7, 18 de septiembre de 2013}
 Con un diseño completamente nuevo (creación del equipo liderado por el vicepresidente senior Sir Jonathan Ive), esta nueva versión traía nuevas funciones como AirDrop, Centro de Control (al hacer swipe desde el borde de abajo de la pantalla), llamadas de solo audio a través de FaceTime y bloqueo remoto en caso de pérdida a través de Find My iPhone.
 
-Se dejó de dar soporte al iPhone 3GS, iPod Touch de 4ª generación 
+Se dejó de dar soporte al iPhone 3GS, iPod Touch de 4ª generación.
 
 \subsection{iOS 8, 2 de junio de 2014}
 
 \subsection{iOS 9, 16 de septiembre de 2015}
+
+\section{Xcode}
+Xcode es el IDE por referencia para el desarrollo de software en OS X y iOS. En Xcode se puede programar en C, C++, Objective-C, Objective-C++, Java, Applescript, Python, Ruby, Rez y Swift. El depurador usado en Xcode es LLDB (un set de componentes de LLVM), que reemplazó a GDB desde la versión 4.3.
+
+Xcode incluye las herramientas necesarias para el desarrollo de aplicaciones para OS X, iOS, watchOS y tvOS; desde el editor de código hasta la documentación.
+
+\section{ExpandIT Internet Shop}
+Para la realización de este proyecto se necesitaba un proveedor de datos que fuera lo más real posible. Ante la imposibilidad de conseguir acceso al sistema de base de datos de un comercio real, se decidió adaptar una tienda online para el propósito del proyecto.
+
+ExpandIT Internet Shop \cite{EIS} (EIS) es una tienda online desarrollada por la empresa danesa ExpandIT, empresa en la que el autor de este proyecto se encuentra actualmente trabajando de manera remunerada.
+
+EIS es capaz de integrarse con los ERP Microsoft Dynamics NAV (antiguamente conocido como Navision, creado por la empresa danesa PC\&C) o Microsoft Dynamics AX (originalmente desarrollado por IBM y la danesa Damgaard Data como IBM Axapta).
+
+Las modificaciones realizadas al software EIS no son relevantes en este proyecto y no serán descritas, salvo las funciones referentes a la toma y envío de datos por parte del servidor.
+
+\section{JSON}
+JSON \cite{JSON} surge como una alternativa mucho más legible para humanos a XML. JSON es actualmente el principal formato usado para la comunicación cliente-servidor asíncrona. Aunque deriva de JavaScript, JSON es un formato independiente de otros lenguajes de programación, lo que permite ser usado por cualquier lenguaje de programación que implemente su generación y parseado.
+
+El esquema seguido por JSON es muy simple, usando parejas de atributos y valores. Los tipos de datos permitidos en JSON son: números, cadenas de caracteres, booleanos, matrices, objetos, y el valor vacío \textit{null}.
+
+\section{Códigos de barras}
+El código de barras es una representación de datos de alta densidad relacionada al producto al que va adjunto. Los códigos de barras originales eran de una dimensión, representando los datos por la variación de anchura y espaciado de una serie de líneas paralelas. Posteriormente han evolucionado a matrices de dos dimensiones.
+
+Su uso ha transcendido la compra-venta de productos y son utilizados en cualquier industria, desde el Departamento de Defensa de los Estados Unidos hasta los brazaletes que llevan los pacientes de los hospitales.
+
+Existen multitud de formatos de códigos de barras que son usados en la actualidad. En este proyecto se ha decidido usar el sistema \textit{Code 128}, al ser uno de los más usados en la actualidad y que permite una codificación de caracteres alfanuméricos ASCII (ampliable a caracteres Latin-1).
 
 \chapterend
