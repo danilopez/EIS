@@ -53,15 +53,15 @@
      name:UIApplicationDidEnterBackgroundNotification object:nil];
     
     self.allowedBarcodeTypes = [NSMutableArray new];
-    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeQRCode];
-    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypePDF417Code];
-    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeUPCECode];
-    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeAztecCode];
-    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeCode39Code];
-    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeCode39Mod43Code];
-    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeEAN13Code];
-    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeEAN8Code];
-    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeCode93Code];
+//    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeQRCode];
+//    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypePDF417Code];
+//    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeUPCECode];
+//    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeAztecCode];
+//    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeCode39Code];
+//    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeCode39Mod43Code];
+//    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeEAN13Code];
+//    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeEAN8Code];
+//    [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeCode93Code];
     [self.allowedBarcodeTypes addObject:AVMetadataObjectTypeCode128Code];
 }
 
