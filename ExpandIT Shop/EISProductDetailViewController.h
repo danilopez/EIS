@@ -12,9 +12,12 @@
 @interface EISProductDetailViewController : UIViewController<UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *totalInclTaxLabel;
-@property (strong, nonatomic) IBOutlet UILabel *stockLabel;
 @property (strong, nonatomic) IBOutlet UITextView *textDescription;
 @property (strong, nonatomic) IBOutlet UIImageView *picture;
 @property (strong, nonatomic) EISProduct *theProduct;
+@property (strong, nonatomic) IBOutlet UILabel *priceText;
+
+- (IBAction)getStock:(id)sender;
+
 
 @end

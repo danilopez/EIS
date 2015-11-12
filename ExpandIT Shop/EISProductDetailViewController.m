@@ -40,8 +40,9 @@
     
 	self.navigationItem.title = theProduct.productName;
     totalInclTaxLabel.text = theProduct.totalInclTax.stringValue;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
-    self.stockLabel.text = [NSString stringWithFormat:@"%@",theProduct.stock];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Tiendas" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -79,4 +80,6 @@
 }
 */
 
+- (IBAction)getStock:(id)sender {
+}
 @end

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zmr-l8-1qc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zmr-l8-1qc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Product Detail View Controller-->
@@ -18,71 +18,69 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99q-JV-K0M">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <userGuides>
+                                    <userLayoutGuide location="300" affinity="minX"/>
+                                </userGuides>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qqj-ea-7Vp">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Price:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7y-0s-L5M">
-                                                <rect key="frame" x="8" y="8" width="44" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Precio:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7y-0s-L5M">
+                                                <rect key="frame" x="8" y="8" width="53" height="21"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Stock:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wm-1q-wxH">
-                                                <rect key="frame" x="8" y="37" width="49" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="listPrice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TG5-Ib-y7z">
+                                                <rect key="frame" x="69" y="8" width="231" height="21"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="listPrice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TG5-Ib-y7z">
-                                                <rect key="frame" x="60" y="8" width="532" height="21"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IpK-Yr-oEo">
+                                                <rect key="frame" x="0.0" y="214" width="600" height="386"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swe-Xh-PFg">
+                                                <rect key="frame" x="300" y="4" width="292" height="30"/>
+                                                <animations/>
+                                                <state key="normal" title="Comprobar stock aquí"/>
+                                                <connections>
+                                                    <action selector="getStock:" destination="KwP-m7-8JU" eventType="touchUpInside" id="Elw-bv-nWR"/>
+                                                </connections>
+                                            </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GD5-SW-TPM">
-                                                <rect key="frame" x="8" y="66" width="584" height="133"/>
+                                                <rect key="frame" x="8" y="42" width="584" height="133"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IpK-Yr-oEo">
-                                                <rect key="frame" x="0.0" y="207" width="600" height="415"/>
-                                                <animations/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="stockLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxd-ob-5sE">
-                                                <rect key="frame" x="60" y="37" width="532" height="21"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="K7y-0s-L5M" firstAttribute="top" secondItem="Qqj-ea-7Vp" secondAttribute="top" constant="8" id="5Jg-ed-rim"/>
                                             <constraint firstAttribute="trailing" secondItem="IpK-Yr-oEo" secondAttribute="trailing" id="9Mz-yZ-OER"/>
-                                            <constraint firstItem="IpK-Yr-oEo" firstAttribute="top" secondItem="GD5-SW-TPM" secondAttribute="bottom" constant="15" id="A69-ne-BAa"/>
-                                            <constraint firstAttribute="trailing" secondItem="lxd-ob-5sE" secondAttribute="trailing" constant="8" id="Blo-KB-i8g"/>
-                                            <constraint firstItem="GD5-SW-TPM" firstAttribute="top" secondItem="4Wm-1q-wxH" secondAttribute="bottom" constant="8" id="CJs-Bg-kMC"/>
-                                            <constraint firstAttribute="trailing" secondItem="TG5-Ib-y7z" secondAttribute="trailing" constant="8" id="CqO-GX-3Q9"/>
+                                            <constraint firstItem="IpK-Yr-oEo" firstAttribute="top" secondItem="GD5-SW-TPM" secondAttribute="bottom" constant="39" id="A69-ne-BAa"/>
                                             <constraint firstItem="IpK-Yr-oEo" firstAttribute="width" secondItem="GD5-SW-TPM" secondAttribute="width" constant="16" id="KSE-TH-KOZ"/>
                                             <constraint firstItem="GD5-SW-TPM" firstAttribute="leading" secondItem="Qqj-ea-7Vp" secondAttribute="leading" constant="8" id="LJY-NS-IS3"/>
                                             <constraint firstItem="TG5-Ib-y7z" firstAttribute="leading" secondItem="K7y-0s-L5M" secondAttribute="trailing" constant="8" id="Lup-pd-zi0"/>
+                                            <constraint firstItem="swe-Xh-PFg" firstAttribute="top" secondItem="Qqj-ea-7Vp" secondAttribute="top" constant="4" id="PUT-B0-LLu"/>
+                                            <constraint firstItem="swe-Xh-PFg" firstAttribute="leading" secondItem="TG5-Ib-y7z" secondAttribute="trailing" id="Rpq-ct-vbb"/>
                                             <constraint firstItem="TG5-Ib-y7z" firstAttribute="top" secondItem="Qqj-ea-7Vp" secondAttribute="top" constant="8" id="YAo-3m-YMR"/>
                                             <constraint firstItem="K7y-0s-L5M" firstAttribute="leading" secondItem="Qqj-ea-7Vp" secondAttribute="leading" constant="8" id="aPc-NE-z4K"/>
                                             <constraint firstAttribute="bottom" secondItem="IpK-Yr-oEo" secondAttribute="bottom" id="bMy-EL-rJR"/>
-                                            <constraint firstItem="lxd-ob-5sE" firstAttribute="leading" secondItem="4Wm-1q-wxH" secondAttribute="trailing" constant="3" id="bT8-K5-Fc4"/>
                                             <constraint firstAttribute="trailing" secondItem="GD5-SW-TPM" secondAttribute="trailing" constant="8" id="fvW-Wx-b4e"/>
-                                            <constraint firstItem="4Wm-1q-wxH" firstAttribute="top" secondItem="K7y-0s-L5M" secondAttribute="bottom" constant="8" id="gDn-bU-je7"/>
+                                            <constraint firstAttribute="trailing" secondItem="swe-Xh-PFg" secondAttribute="trailing" constant="8" id="ht8-th-kpa"/>
                                             <constraint firstItem="IpK-Yr-oEo" firstAttribute="leading" secondItem="Qqj-ea-7Vp" secondAttribute="leading" id="ncU-6G-2Aq"/>
+                                            <constraint firstItem="GD5-SW-TPM" firstAttribute="leading" secondItem="K7y-0s-L5M" secondAttribute="trailing" constant="-53" id="p1X-2v-uxo"/>
                                             <constraint firstAttribute="bottom" secondItem="IpK-Yr-oEo" secondAttribute="bottom" id="pnn-rW-Ky8"/>
+                                            <constraint firstItem="GD5-SW-TPM" firstAttribute="top" secondItem="K7y-0s-L5M" secondAttribute="bottom" constant="13" id="uMB-gK-iEb"/>
+                                            <constraint firstItem="swe-Xh-PFg" firstAttribute="leading" secondItem="TG5-Ib-y7z" secondAttribute="trailing" id="vQc-Bh-Z0Z"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -112,7 +110,7 @@
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="picture" destination="IpK-Yr-oEo" id="Y60-ei-pRE"/>
-                        <outlet property="stockLabel" destination="lxd-ob-5sE" id="ihT-Dz-UcE"/>
+                        <outlet property="priceText" destination="K7y-0s-L5M" id="YeE-pr-b2P"/>
                         <outlet property="textDescription" destination="GD5-SW-TPM" id="mad-Ub-pQC"/>
                         <outlet property="totalInclTaxLabel" destination="TG5-Ib-y7z" id="8lT-Nf-33w"/>
                     </connections>
