@@ -109,6 +109,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
+                        <outlet property="getStockButton" destination="swe-Xh-PFg" id="aI7-cq-k3q"/>
                         <outlet property="picture" destination="IpK-Yr-oEo" id="Y60-ei-pRE"/>
                         <outlet property="priceText" destination="K7y-0s-L5M" id="YeE-pr-b2P"/>
                         <outlet property="textDescription" destination="GD5-SW-TPM" id="mad-Ub-pQC"/>

@@ -9,15 +9,19 @@
 #import "EISProductDetailViewController.h"
 
 #define BASE_URL @"http://demo2.expandit.com/daniel-master-project"
+#define API_STRING @"http://demo2.expandit.com/daniel-master-project/api/v1"
 #define kMaxHeight 200.f
 
 @interface EISProductDetailViewController ()<NSURLSessionDownloadDelegate>
+
+@property (nonatomic, strong) NSURLSession *session;
+@property (nonatomic, strong) NSURLSessionDataTask *dataTask;
 
 @end
 
 @implementation EISProductDetailViewController
 
-@synthesize textDescription, picture, theProduct, totalInclTaxLabel;
+@synthesize textDescription, picture, theProduct, totalInclTaxLabel, getStockButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -81,5 +85,36 @@
 */
 
 - (IBAction)getStock:(id)sender {
+    if (self.dataTask)
+        [self.dataTask cancel];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/GetStockFor?productGuid=%@",API_STRING, self.theProduct.productGuid]]];
+    [request setHTTPMethod:@"POST"];
+    [request setTimeoutInterval:30.0f];
+    
+    self.dataTask = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error && error.code != -999) {
+            NSLog(@"Error on REQUEST: %@",error);
+            return;
+        }
+        NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSLog(@"Stock: %@",[results objectForKey:@"Stock"]);
+        [getStockButton setTitle:[NSString stringWithFormat:@"Stock: %@",[results objectForKey:@"Stock"]]forState:UIControlStateNormal];
+        [getStockButton setTitle:[NSString stringWithFormat:@"Stock: %@",[results objectForKey:@"Stock"]]forState:UIControlStateSelected];
+    }];
+    
+    if (self.dataTask)
+        [self.dataTask resume];
 }
+
+#pragma mark - Session
+- (NSURLSession *)session {
+    if (!_session) {
+        NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        [sessionConfiguration setHTTPAdditionalHeaders:@{@"Accept": @"application/json"}];
+        _session = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    }
+    return _session;
+}
+
 @end

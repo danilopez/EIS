@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *picture;
 @property (strong, nonatomic) EISProduct *theProduct;
 @property (strong, nonatomic) IBOutlet UILabel *priceText;
+@property (strong, nonatomic) IBOutlet UIButton *getStockButton;
 
 - (IBAction)getStock:(id)sender;
 
