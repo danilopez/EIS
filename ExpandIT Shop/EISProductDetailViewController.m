@@ -68,6 +68,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    if (locations.count != 0) {
+        [locations removeAllObjects];
+    }
     return [super viewWillAppear:animated];
 }
 

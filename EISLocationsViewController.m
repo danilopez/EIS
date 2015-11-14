@@ -8,6 +8,7 @@
 
 #import "EISLocationsViewController.h"
 #import "EISInventoryLocation.h"
+#import "EISMapViewController.h"
 
 @interface EISLocationsViewController ()
 
@@ -29,12 +30,6 @@ static NSString *cellIdentifier = @"LocationCell";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [locations removeAllObjects];
-    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +58,11 @@ static NSString *cellIdentifier = @"LocationCell";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    EISInventoryLocation *location = [locations objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"MapView" sender:location];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -98,14 +98,17 @@ static NSString *cellIdentifier = @"LocationCell";
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"MapView"]) {
+        EISMapViewController *mapVC = segue.destinationViewController;
+        [mapVC setLocation: (EISInventoryLocation *)sender];
+    }
+
 }
-*/
+
 
 @end

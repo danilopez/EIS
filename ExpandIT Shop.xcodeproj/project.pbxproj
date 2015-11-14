@@ -18,6 +18,7 @@
 		657ED93C1BF7CFDE008DF3F7 /* EISInventoryLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 657ED93B1BF7CFDE008DF3F7 /* EISInventoryLocation.m */; };
 		657ED93F1BF7D298008DF3F7 /* EISLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657ED93E1BF7D298008DF3F7 /* EISLocationsViewController.m */; };
 		657ED9421BF7EEF3008DF3F7 /* EISMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657ED9411BF7EEF3008DF3F7 /* EISMapViewController.m */; };
+		657ED9461BF7EFE4008DF3F7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657ED9451BF7EFE4008DF3F7 /* MapKit.framework */; };
 		659CBC6E1BCF03D0009493BD /* Barcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 659CBC6D1BCF03D0009493BD /* Barcode.m */; };
 		659CBC701BCF04F4009493BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659CBC6F1BCF04F4009493BD /* Foundation.framework */; };
 		659CBC731BCF0726009493BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659CBC711BCF04FD009493BD /* CoreGraphics.framework */; };
@@ -57,6 +58,7 @@
 		657ED93E1BF7D298008DF3F7 /* EISLocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EISLocationsViewController.m; path = ../EISLocationsViewController.m; sourceTree = "<group>"; };
 		657ED9401BF7EEF3008DF3F7 /* EISMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EISMapViewController.h; sourceTree = "<group>"; };
 		657ED9411BF7EEF3008DF3F7 /* EISMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EISMapViewController.m; sourceTree = "<group>"; };
+		657ED9451BF7EFE4008DF3F7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		659CBC661BCF0184009493BD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		659CBC671BCF0184009493BD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		659CBC6C1BCF03D0009493BD /* Barcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barcode.h; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				657ED9461BF7EFE4008DF3F7 /* MapKit.framework in Frameworks */,
 				657ED9301BF78BB8008DF3F7 /* CoreLocation.framework in Frameworks */,
 				659CBC731BCF0726009493BD /* CoreGraphics.framework in Frameworks */,
 				659CBC701BCF04F4009493BD /* Foundation.framework in Frameworks */,
@@ -165,6 +168,7 @@
 		6553DD5B1BC735700035E63A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				657ED9451BF7EFE4008DF3F7 /* MapKit.framework */,
 				657ED92F1BF78BB8008DF3F7 /* CoreLocation.framework */,
 				659CBC711BCF04FD009493BD /* CoreGraphics.framework */,
 				659CBC6F1BCF04F4009493BD /* Foundation.framework */,

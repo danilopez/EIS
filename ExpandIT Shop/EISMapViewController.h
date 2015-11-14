@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <MapKit/MKAnnotation.h>
+#import "EISInventoryLocation.h"
 
-@interface EISMapViewController : UIViewController
+@interface EISMapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
+
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) EISInventoryLocation *location;
 
 @end
