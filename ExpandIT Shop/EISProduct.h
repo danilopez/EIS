@@ -25,7 +25,6 @@
 @property (nonatomic, strong) NSString *productGrp;
 @property (nonatomic, strong) NSString *currencyGuid;
 @property (nonatomic, strong) NSNumber *totalInclTax;
-@property (nonatomic, strong) NSNumber *stock;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 
