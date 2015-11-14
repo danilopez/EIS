@@ -27,6 +27,8 @@
     
     [self.locationManager startUpdatingLocation];
     
+    self.navigationItem.title = location.inventoryLocationName;
+    
     mapView.showsUserLocation = YES;
     [mapView setMapType:MKMapTypeHybrid];
     [mapView setZoomEnabled:YES];
@@ -35,7 +37,7 @@
     MKPointAnnotation *point = [[MKPointAnnotation alloc]init];
     CLLocationCoordinate2D coordinate = {[self.location.latitude doubleValue], [self.location.longitude doubleValue]};
     point.title = self.location.inventoryLocationName;
-    point.subtitle = [self.location.quantity stringValue];
+    point.subtitle = [NSString stringWithFormat:@"Stock: %@",[self.location.quantity stringValue]];
     point.coordinate = coordinate;
     
     [self.mapView addAnnotation:point];

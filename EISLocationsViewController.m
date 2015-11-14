@@ -55,6 +55,7 @@ static NSString *cellIdentifier = @"LocationCell";
     cell.textLabel.text = location.inventoryLocationName;
     NSString *stock =[NSString stringWithFormat:@"Stock: %@",location.quantity];
     cell.detailTextLabel.text = stock;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
