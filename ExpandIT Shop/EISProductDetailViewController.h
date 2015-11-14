@@ -20,5 +20,4 @@
 
 - (IBAction)getStock:(id)sender;
 
-
 @end
