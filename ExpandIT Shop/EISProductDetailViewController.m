@@ -27,7 +27,7 @@
 
 @implementation EISProductDetailViewController
 
-@synthesize textDescription, picture, theProduct, totalInclTaxLabel, getStockButton, locationManager, lastLocation, locations;
+@synthesize textDescription, picture, theProduct, totalInclTaxLabel, getStockButton, locationManager, lastLocation, locations, priceText;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +45,9 @@
 	NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:[NSURL URLWithString:thePicture]];
 	[downloadTask resume];
     
+    textDescription.textContainer.lineFragmentPadding = 0;
+    textDescription.textContainerInset = UIEdgeInsetsZero;
+    
     self.locations = [[NSMutableArray alloc] init];
     
     // Location
@@ -58,7 +61,11 @@
 
     // UI
 	textDescription.text = theProduct.description;
+    [textDescription setFont:[UIFont systemFontOfSize:15]];
+    textDescription.textAlignment = NSTextAlignmentJustified;
     [textDescription sizeToFit];
+    
+    priceText.text = @"Precio: ";
     
 	self.navigationItem.title = theProduct.productName;
     totalInclTaxLabel.text = theProduct.totalInclTax.stringValue;
