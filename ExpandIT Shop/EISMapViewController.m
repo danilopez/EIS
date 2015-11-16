@@ -9,6 +9,7 @@
 #import "EISMapViewController.h"
 #define MAP_PADDING 1.2
 #define MINIMUN_VISIBLE_LATITUDE 0.01
+#import "EISAnnotation.h"
 
 @interface EISMapViewController ()
 
@@ -34,12 +35,10 @@
     [mapView setZoomEnabled:YES];
     [mapView setScrollEnabled:YES];
     
-    MKPointAnnotation *point = [[MKPointAnnotation alloc]init];
-    CLLocationCoordinate2D coordinate = {[self.location.latitude doubleValue], [self.location.longitude doubleValue]};
-    point.title = self.location.inventoryLocationName;
-    point.subtitle = [NSString stringWithFormat:@"Stock: %@",[self.location.quantity stringValue]];
-    point.coordinate = coordinate;
-    
+
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake([self.location.latitude doubleValue], [self.location.longitude doubleValue]);
+    EISAnnotation *point = [[EISAnnotation alloc]initWithTitle:self.location.inventoryLocationName stock:self.location.quantity homePage:self.location.homePage location:coordinate];
+   
     [self.mapView addAnnotation:point];
 }
 
@@ -84,5 +83,63 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if([annotation isKindOfClass:[EISAnnotation class]]) {
+        EISAnnotation *myAnnotation = (EISAnnotation *)annotation;
+        MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[theMapView dequeueReusableAnnotationViewWithIdentifier:@"EISAnnotation"];
+        if (annotationView == nil) {
+            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:myAnnotation reuseIdentifier:@"EISAnnotation"];
+            annotationView.canShowCallout = YES;
+            annotationView.pinTintColor = [UIColor redColor];
+            if (myAnnotation.homePage != (NSString *)[NSNull null]) {
+                UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                leftButton.frame = CGRectMake(0, 0, annotationView.frame.size.height, annotationView.frame.size.height);
+                [leftButton setImage:[UIImage imageNamed:@"homepage"] forState:UIControlStateNormal];
+                leftButton.tintColor = [UIColor greenColor];
+                leftButton.tag = 1;
+                annotationView.leftCalloutAccessoryView = leftButton;
+            }
+            
+            UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            rightButton.frame = CGRectMake(0, 0, annotationView.frame.size.height, annotationView.frame.size.height);
+            [rightButton setImage:[UIImage imageNamed:@"car"] forState:UIControlStateNormal];
+            rightButton.tag = 2;
+            annotationView.rightCalloutAccessoryView = rightButton;
+        } else {
+            annotationView.annotation = annotation;
+        }
+        
+        return annotationView;
+    }
+    return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    EISAnnotation *theAnnotation = (EISAnnotation *)view.annotation;
+    if (control == view.leftCalloutAccessoryView) {
+        // Left Accessory Button Tapped
+        NSURL *url = nil;
+        if (![theAnnotation.homePage hasPrefix:@"http://"]) {
+            url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@",theAnnotation.homePage]];
+        } else {
+            url = [NSURL URLWithString:theAnnotation.homePage];
+        }
+        [[UIApplication sharedApplication] openURL:url];
+    } else if (control == view.rightCalloutAccessoryView) {
+        // "Right Accessory Button Tapped
+        MKPlacemark *theLocation = [[MKPlacemark alloc] initWithCoordinate:theAnnotation.coordinate addressDictionary:nil];
+        MKMapItem *destination = [[MKMapItem alloc] initWithPlacemark:theLocation];
+        
+        if ([destination respondsToSelector:@selector(openInMapsWithLaunchOptions:)]) {
+            [destination openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeWalking}];
+        } else {
+            NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=Current+Location&daddr=%f,%f",theAnnotation.coordinate.latitude, theAnnotation.coordinate.longitude];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+        }
+    }
+}
+
+
 
 @end

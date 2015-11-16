@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650AC0DA1BF893F60073D2A9 /* EISAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 650AC0D91BF893F60073D2A9 /* EISAnnotation.m */; };
 		65300A1B1A42D02F00327565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65300A1A1A42D02F00327565 /* main.m */; };
 		65300A1E1A42D02F00327565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65300A1D1A42D02F00327565 /* AppDelegate.m */; };
 		65300A271A42D02F00327565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65300A251A42D02F00327565 /* Main.storyboard */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		650AC0D81BF893F60073D2A9 /* EISAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EISAnnotation.h; sourceTree = "<group>"; };
+		650AC0D91BF893F60073D2A9 /* EISAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EISAnnotation.m; sourceTree = "<group>"; };
 		65300A151A42D02F00327565 /* ExpandIT Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ExpandIT Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65300A191A42D02F00327565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65300A1A1A42D02F00327565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 				657ED93E1BF7D298008DF3F7 /* EISLocationsViewController.m */,
 				657ED9401BF7EEF3008DF3F7 /* EISMapViewController.h */,
 				657ED9411BF7EEF3008DF3F7 /* EISMapViewController.m */,
+				650AC0D81BF893F60073D2A9 /* EISAnnotation.h */,
+				650AC0D91BF893F60073D2A9 /* EISAnnotation.m */,
 				659CBC681BCF02D2009493BD /* Models */,
 				65300A281A42D02F00327565 /* Images.xcassets */,
 				65300A2A1A42D02F00327565 /* LaunchScreen.xib */,
@@ -294,6 +299,7 @@
 			files = (
 				657ED9421BF7EEF3008DF3F7 /* EISMapViewController.m in Sources */,
 				65E3DCCB1A444DA400C14E5F /* EISProduct.m in Sources */,
+				650AC0DA1BF893F60073D2A9 /* EISAnnotation.m in Sources */,
 				657ED93C1BF7CFDE008DF3F7 /* EISInventoryLocation.m in Sources */,
 				65300A1E1A42D02F00327565 /* AppDelegate.m in Sources */,
 				657ED93F1BF7D298008DF3F7 /* EISLocationsViewController.m in Sources */,
