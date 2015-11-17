@@ -16,8 +16,26 @@ En esta sección nos concentraremos en describir la aplicación cliente que el u
 \end{figure}
 
 \subsection{Pantallas del cliente}
- 
+La aplicación móvil dispone de una pantalla de inicio, una pantalla que previsualiza la imagen capturada por la cámara trasera del móvil, una pantalla que muestra el producto escaneado, una pantalla que lista las diferentes tiendas con el stock actual de dicho producto, y una mapa que muestra la posición actual del usuario y de la tienda seleccionada en la pantalla anterior.
+
+A continuación se describirá cada una de las pantallas que componen nuestra aplicación. El dispositivo utilizado para el desarrollo es un iPhone 5 con una resolución de 1136x640 píxeles, aunque esto no supone ningún impedimento para mostrar la aplicación en otras resoluciones gracias al uso de AutoLayout.
+
+Esta tecnología permite definir las reglas por las que se rigen los elementos en pantalla (campos de texto, botones, etc.) en vez de definir unas medidas exactas.
+
+\subsubsection{Pantalla de inicio}
+La aplicación móvil dispone de una pantalla de inicio que muestra el logotipo de la empresa que ha encargado la creación de la app. Este proceso es requerido por Apple si se desea publicar la aplicación en la App Store. El tiempo que esta pantalla es mostrada dependerá de la velocidad con la que se inicia la aplicación.
+
+%% TO DO: Poner imagen de la UMA y hacer captura.
+
 \subsubsection{Pantalla de inicio: cámara}
+Lo primero que verá el usuario en pantalla será la propia imagen de la cámara, lista para capturar un código de barras. El decodificador de barras está programado de manera que únicamente reconozca el formato \emph{Code 128}. En caso de lectura de un código que no pertenezca a ningún producto, se muestra un mensaje de error.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=0.4\textwidth]{./img/camara-error.jpg}
+	\caption{Mensaje de error mostrado al usuario cuando el código de barras es incorrecto.}
+	\label{fig:codigoBarrasError}
+\end{figure}
 
 \subsubsection{Pantalla de información de producto}
 
