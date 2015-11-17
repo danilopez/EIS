@@ -92,7 +92,6 @@
     _videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     if (!_videoDevice) {
-        NSLog(@"No video camera on this device!");
         return;
     }
     
@@ -153,33 +152,7 @@
 
 - (void)validBarcodefound:(Barcode *)barcode {
     [self stopRunning];
-    NSLog(@"Barcode found: %@", barcode.getBarcodeData);
-    // Do something
     [self getProduct:barcode.getBarcodeData];
-}
-
-- (void) showBarcodeAlert:(Barcode *)barcode{
-    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // Code to do in background processing
-        NSString * alertMessage = [barcode getBarcodeData];
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Barcode found!"
-                                                                       message:alertMessage
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {
-                                                                  [self startRunning];
-                                                              }];
-        
-        [alert addAction:defaultAction];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Code to update the UI/send notifications based on the results of the background processing
-        [self presentViewController:alert animated:YES completion:nil];
-            
-        });
-    });
 }
 
 #pragma mark - Session
@@ -193,11 +166,11 @@
 }
 
 - (void)productNotFoundError {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Product not found"
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Código de barras incorrecto"
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Volver a intentar" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self startRunning];
                                                           }];
