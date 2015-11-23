@@ -32,14 +32,50 @@ Lo primero que verá el usuario en pantalla será la propia imagen de la cámara
 
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=0.4\textwidth]{./img/camara-error.jpg}
+		\frame{\includegraphics[width=0.4\textwidth]{./img/screenshot-camara-error.jpg}}
 	\caption{Mensaje de error mostrado al usuario cuando el código de barras es incorrecto.}
 	\label{fig:codigoBarrasError}
 \end{figure}
 
 \subsubsection{Pantalla de información de producto}
+Una vez que se ha escaneado un código de barras válido, el servidor buscará en su base de datos el producto y devolverá el resultado en JSON. La aplicación cliente es la encargada de parsear el mensaje y mostrar en pantalla el nombre del producto, precio, descripción y una imagen.
+
+\begin{figure}[h]
+	\centering
+		\frame{\includegraphics[width=0.4\textwidth]{./img/screenshot-info-producto.png}}
+	\caption{Pantalla de información del producto escaneado. Muestra el nombre del producto, el precio, una descripción, una imagen y un botón para pedir el número de productos en stock.}
+	\label{fig:infoProducto}
+\end{figure}
+
+También se muestra un botón con el cual el usuario verificará el stock de dicho producto en la posición actual del dispositivo.
+
+Cuando el usuario presiona este botón, se envía al servidor una petición cuyos parámetros son el código de producto, la latitud y longitud del dispositivo, y la precisión con la que el GPS ha operado.
+
+\begin{figure}[H]
+	\centering
+		\frame{\includegraphics[width=0.4\textwidth]{./img/screenshot-boton-stock.png}}
+	\caption{Cuando se presiona el botón de comprobación de stock, este cambia el texto del botón por el stock del producto.}
+	\label{fig:botonStock}
+\end{figure}
+
+Si el cálculo de la posición del usuario con respecto a la tienda más cercana diera como resultado que no se encuentra en alguno de los comercios que están almacenados en la base de datos o la precisión del GPS no es suficiente, se procede a mostrar un mensaje de error.
+
+\begin{figure}[H]
+	\centering
+		\frame{\includegraphics[width=0.4\textwidth]{./img/screenshot-error-gps.png}}
+	\caption{Mensaje de error al no localizar al usuario dentro de una tienda.}
+	\label{fig:errorGPS}
+\end{figure}
 
 \subsubsection{Pantalla de lista de tiendas con stock}
+Al pulsar sobre el botón ``Tiendas'', el servidor nos devuelve un mensaje con un array en JSON. Cada elemento del array supone un objeto con información de cada tienda y del stock del producto seleccionado en cada una de ellas. Este array es transformado para ser mostrado en una \texttt{UITableView}.
+
+\begin{figure}[H]
+	\centering
+		\frame{\includegraphics[width=0.4\textwidth]{./img/screenshot-lista-tiendas.png}}
+	\caption{Listado de tiendas que muestra el stock del producto en cada una de ellas.}
+	\label{fig:listaTiendas}
+\end{figure}
 
 \subsubsection{Pantalla de mapa con tienda geolocalizada}
 
