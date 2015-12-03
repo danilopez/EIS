@@ -6,17 +6,24 @@ La aplicación desarrollada en el presente proyecto está compuesta por dos part
 Como ya se ha comentado en el primer capítulo, la parte del servidor no será descrita por completo ya que no entra dentro del ámbito de este Proyecto de Fin de Carrera.
 
 \section{Cliente}
-En esta sección nos concentraremos en describir la aplicación cliente que el usuario dispondrá en su iPhone. Este cliente debe proporcionar de manera rápida y eficaz la información que necesita el usuario. Para ello se ha diseñado un sistema de navegación de varios pasos consecutivos, simplificando la UI al máximo para cumplir los requisitos de rapidez y eficacia, teniendo en mente siempre que el usuario utilizará nuestra aplicaciones por un tiempo menor de 30 segundos, ya que se encuentra ocupado comprando en la tienda física. En la figura \ref{fig:esqueleto} se muestra el esqueleto de nuestra aplicación cliente.
+En esta sección nos concentraremos en describir la aplicación cliente que el usuario dispondrá en su iPhone. Este cliente debe proporcionar de manera rápida y eficaz la información que necesita el usuario. Para ello se ha diseñado un sistema de navegación de varios pasos consecutivos, simplificando la UI al máximo para cumplir los requisitos de rapidez y eficacia, teniendo en mente siempre que el usuario utilizará nuestra aplicaciones por un tiempo menor de 30 segundos, ya que se encuentra ocupado comprando en la tienda física. En la Figura \ref{fig:esqueleto} se muestra el esqueleto de nuestra aplicación cliente.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-		\includegraphics[width=0.3\textwidth]{./img/esqueleto-app.png}
+		\includegraphics[width=0.4\textwidth]{./img/esqueleto-app.png}
 	\caption{Esqueleto de navegación entre pantallas de la aplicación móvil cliente del usuario.}
 	\label{fig:esqueleto}
 \end{figure}
 
 \subsection{Pantallas del cliente}
 La aplicación móvil dispone de una pantalla de inicio, una pantalla que previsualiza la imagen capturada por la cámara trasera del móvil, una pantalla que muestra el producto escaneado, una pantalla que lista las diferentes tiendas con el stock actual de dicho producto, y una mapa que muestra la posición actual del usuario y de la tienda seleccionada en la pantalla anterior.
+
+\begin{figure}[H]
+	\centering
+		\frame{\includegraphics[width=1\textwidth]{./img/storyboard.png}}
+	\caption{Previsualización en \emph{Storyboard} de las pantallas de la aplicación cliente.}
+	\label{fig:storyboard}
+\end{figure}
 
 A continuación se describirá cada una de las pantallas que componen nuestra aplicación. El dispositivo utilizado para el desarrollo es un iPhone 5 con una resolución de 1136x640 píxeles, aunque esto no supone ningún impedimento para mostrar la aplicación en otras resoluciones gracias al uso de AutoLayout.
 
@@ -30,9 +37,9 @@ La aplicación móvil dispone de una pantalla de inicio que muestra el logotipo 
 \subsubsection{Pantalla de inicio: cámara}
 Lo primero que verá el usuario en pantalla será la propia imagen de la cámara, lista para capturar un código de barras. El decodificador de barras está programado de manera que únicamente reconozca el formato \emph{Code 128}. En caso de lectura de un código que no pertenezca a ningún producto, se muestra un mensaje de error.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-		\frame{\includegraphics[width=0.4\textwidth]{./img/screenshot-camara-error.jpg}}
+		\frame{\includegraphics[width=0.5\textwidth]{./img/screenshot-camara-error.jpg}}
 	\caption{Mensaje de error mostrado al usuario cuando el código de barras es incorrecto.}
 	\label{fig:codigoBarrasError}
 \end{figure}
@@ -40,9 +47,9 @@ Lo primero que verá el usuario en pantalla será la propia imagen de la cámara
 \subsubsection{Pantalla de información de producto}
 Una vez que se ha escaneado un código de barras válido, el servidor buscará en su base de datos el producto y devolverá el resultado en JSON. La aplicación cliente es la encargada de parsear el mensaje y mostrar en pantalla el nombre del producto, precio, descripción y una imagen.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-		\frame{\includegraphics[width=0.4\textwidth]{./img/screenshot-info-producto.png}}
+		\frame{\includegraphics[width=0.5\textwidth]{./img/screenshot-info-producto.png}}
 	\caption{Pantalla de información del producto escaneado. Muestra el nombre del producto, el precio, una descripción, una imagen y un botón para pedir el número de productos en stock.}
 	\label{fig:infoProducto}
 \end{figure}
@@ -53,7 +60,7 @@ Cuando el usuario presiona este botón, se envía al servidor una petición cuyo
 
 \begin{figure}[H]
 	\centering
-		\frame{\includegraphics[width=0.4\textwidth]{./img/screenshot-boton-stock.png}}
+		\frame{\includegraphics[width=0.5\textwidth]{./img/screenshot-boton-stock.png}}
 	\caption{Cuando se presiona el botón de comprobación de stock, este cambia el texto del botón por el stock del producto.}
 	\label{fig:botonStock}
 \end{figure}
@@ -62,7 +69,7 @@ Si el cálculo de la posición del usuario con respecto a la tienda más cercana
 
 \begin{figure}[H]
 	\centering
-		\frame{\includegraphics[width=0.4\textwidth]{./img/screenshot-error-gps.png}}
+		\frame{\includegraphics[width=0.5\textwidth]{./img/screenshot-error-gps.png}}
 	\caption{Mensaje de error al no localizar al usuario dentro de una tienda.}
 	\label{fig:errorGPS}
 \end{figure}
@@ -72,12 +79,38 @@ Al pulsar sobre el botón ``Tiendas'', el servidor nos devuelve un mensaje con u
 
 \begin{figure}[H]
 	\centering
-		\frame{\includegraphics[width=0.4\textwidth]{./img/screenshot-lista-tiendas.png}}
+		\frame{\includegraphics[width=0.5\textwidth]{./img/screenshot-lista-tiendas.png}}
 	\caption{Listado de tiendas que muestra el stock del producto en cada una de ellas.}
 	\label{fig:listaTiendas}
 \end{figure}
 
 \subsubsection{Pantalla de mapa con tienda geolocalizada}
+La última pantalla a la que puede llegar el usuario muestra un mapa con la localización del usuario y de la tienda seleccionada.
+
+\begin{figure}[H]
+	\centering
+		\frame{\includegraphics[width=0.5\textwidth]{./img/screenshot-mapa1.png}}
+	\caption{En el mapa se muestra la ubicación del usuario (punto azul) y de la tienda seleccionada (chincheta roja).}
+	\label{fig:mapa}
+\end{figure}
+
+Cuando el usuario presiona sobre el marcador rojo de la tienda, una anotación aparece y permite al usuario visitar la página web asociada a dicho comercio (si está especificada en la base de datos).
+
+\begin{figure}[H]
+	\centering
+		\frame{\includegraphics[width=0.8\textwidth]{./img/screenshot-mapa-anotaciones.png}}
+	\caption{Las anotaciones de tiendas pueden llevar un icono que redirige a su página web (izquierda) o carecer de ello (derecha).}
+	\label{fig:mapa-anotaciones}
+\end{figure}
+
+El usuario también puede ordenar a la aplicación iniciar una ruta con navegación paso por paso desde la ubicación actual hasta la tienda destino, tal y como se muestra en la Figura \ref{fig:mapa-ruta}.
+
+\begin{figure}[H]
+	\centering
+		\frame{\includegraphics[width=0.5\textwidth]{./img/screenshot-ruta.png}}
+	\caption{La aplicación envía al usuario a la app Maps para iniciar una navegación paso por paso.}
+	\label{fig:mapa-ruta}
+\end{figure}
 
 \subsection{Petición y recepción de datos del servidor en el cliente}
 Como ya se ha comentado anteriormente, la aplicación cliente realiza peticiones al servidor, que devuelve los datos en formato JSON.
