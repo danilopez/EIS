@@ -224,18 +224,10 @@
                     <view key="view" contentMode="scaleToFill" id="Ol9-DL-Ssc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DNV-rY-KbU">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="previewView" destination="DNV-rY-KbU" id="cNe-kh-PSf"/>
                         <segue destination="e4J-Ip-PFh" kind="show" identifier="Detail" id="mX7-S9-Mc9"/>
                     </connections>
                 </viewController>

@@ -21,7 +21,6 @@
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
 @property (nonatomic, strong) EISProduct *theProduct;
-@property (nonatomic, weak) IBOutlet UIView *previewView;
 @property (nonatomic, strong) NSMutableArray *allowedBarcodeTypes;
 
 @end
@@ -39,9 +38,10 @@
     [super viewDidLoad];
     
     [self setupCaptureSession];
-    _previewLayer.frame = _previewView.bounds;
-    [_previewView.layer addSublayer:_previewLayer];
     
+    _previewLayer.frame = self.view.bounds;
+    [self.view.layer addSublayer:_previewLayer];
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(applicationWillEnterForeground:)
@@ -101,7 +101,7 @@
     if ([_captureSession canAddInput:_videoInput])
         [_captureSession addInput:_videoInput];
     
-    _previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
+    _previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:_captureSession];
     _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     
     _metadataOutput = [[AVCaptureMetadataOutput alloc] init];
