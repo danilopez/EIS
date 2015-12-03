@@ -132,7 +132,7 @@
         MKMapItem *destination = [[MKMapItem alloc] initWithPlacemark:theLocation];
         
         if ([destination respondsToSelector:@selector(openInMapsWithLaunchOptions:)]) {
-            [destination openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeWalking}];
+            [destination openInMapsWithLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving}];
         } else {
             NSString *url = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=Current+Location&daddr=%f,%f",theAnnotation.coordinate.latitude, theAnnotation.coordinate.longitude];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
