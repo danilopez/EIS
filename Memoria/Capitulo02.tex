@@ -44,7 +44,7 @@ Lo primero que verá el usuario en pantalla será la propia imagen de la cámara
 	\label{fig:codigoBarrasError}
 \end{figure}
 
-\subsubsection{Pantalla de información de producto}
+\subsubsection{Pantalla de información de producto} \label{sssec:pantalla-info-producto}
 Una vez que se ha escaneado un código de barras válido, el servidor buscará en su base de datos el producto y devolverá el resultado en JSON. La aplicación cliente es la encargada de parsear el mensaje y mostrar en pantalla el nombre del producto, precio, descripción y una imagen.
 
 \begin{figure}[H]
@@ -113,7 +113,25 @@ El usuario también puede ordenar a la aplicación iniciar una ruta con navegaci
 \end{figure}
 
 \subsection{Petición y recepción de datos del servidor en el cliente}
-Como ya se ha comentado anteriormente, la aplicación cliente realiza peticiones al servidor, que devuelve los datos en formato JSON.
+Como ya se ha comentado anteriormente, la aplicación cliente realiza peticiones al servidor, que devuelve los datos en formato JSON. Dependiendo de la pantalla en la que se encuentre el usuario, la aplicación realizará una llamada u otra.
+
+En la Figura \ref{fig:diagrama-camara} se muestra la secuencia de comunicación entre cliente y servidor que se produce en la lectura de un código de barras y búsqueda del producto correspondiente. En primer lugar, en el cliente se inicia la cámara (primeramente se debe pedir permiso al usuario para usar la cámara) y comienza el proceso de lectura constante en busca de un código de barras válido (en nuestro caso \emph{Code 128}). Tras la lectura de un código de barras válido, el cliente envía una llamada al servidor con la función \texttt{getProduct:} y el identificador decodificado del código de barras. El servidor devuelve un documento JSON con la información del producto seleccionado o un código de error.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=1\textwidth]{./img/diagrama-camara.png}
+	\caption{Diagrama de secuencia de lectura de código de barras y búsqueda de producto.}
+	\label{fig:diagrama-camara}
+\end{figure}
+
+Una vez la aplicación se encuentra en la pantalla descrita en el apartado \ref{sssec:pantalla-info-producto}, el usuario puede pulsar sobre el botón para obtener el stock de ese producto. Tal y como se puede ver en la Figura \ref{fig:diagrama-get-stock}, el cliente obtiene las coordenadas que geolocalizan al dispositivo con una precisión ajustada con un error mínimo (siempre dependiendo de las limitaciones físicas del lugar)
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=1\textwidth]{./img/diagrama-get-stock.png}
+	\caption{Diagrama de secuencia de lectura de código de barras y búsqueda de producto.}
+	\label{fig:diagrama-get-stock}
+\end{figure}
 
 \section{Servidor}
 
