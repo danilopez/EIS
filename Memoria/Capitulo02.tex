@@ -124,15 +124,27 @@ En la Figura \ref{fig:diagrama-camara} se muestra la secuencia de comunicación 
 	\label{fig:diagrama-camara}
 \end{figure}
 
-Una vez la aplicación se encuentra en la pantalla descrita en el apartado \ref{sssec:pantalla-info-producto}, el usuario puede pulsar sobre el botón para obtener el stock de ese producto. Tal y como se puede ver en la Figura \ref{fig:diagrama-get-stock}, el cliente obtiene las coordenadas que geolocalizan al dispositivo con una precisión ajustada con un error mínimo (siempre dependiendo de las limitaciones físicas del lugar)
+Una vez la aplicación se encuentra en la pantalla descrita en el apartado \ref{sssec:pantalla-info-producto}, el usuario puede pulsar sobre el botón para obtener el stock de ese producto. Tal y como se puede ver en la Figura \ref{fig:diagrama-get-stock}, el cliente obtiene las coordenadas que geolocalizan al dispositivo con una precisión de error mínima (siempre dependiendo de las limitaciones físicas del lugar) y se realiza la llamada al servidor enviando la longitud, latitud y precisión obtenida, junto al identificador de producto.
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[width=1\textwidth]{./img/diagrama-get-stock.png}
-	\caption{Diagrama de secuencia de lectura de código de barras y búsqueda de producto.}
+	\caption{Diagrama de secuencia para mostrar el stock de un producto.}
 	\label{fig:diagrama-get-stock}
 \end{figure}
 
+Cuando el servidor envía los datos de vuelta, el botón usado cambia el texto para mostrar el stock, y sigue estando disponible para realizar nuevamente la acción.
+
+En esta misma pantalla, el usuario también puede pulsar sobre el botón \emph{Tiendas} para obtener un listado con las tiendas y el stock de este producto en cada una.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=1\textwidth]{./img/diagrama-get-stock.png}
+	\caption{Diagrama de secuencia de obtención de listado de tiendas.}
+	\label{fig:diagrama-tiendas}
+\end{figure}
+
 \section{Servidor}
+Este apartado se centra en la parte del servidor. El servidor proporciona por un lado respuestas a las peticiones que le realiza el cliente (devolviendo documentos en lenguaje JSON con los datos) y por otro lado, 
 
 \chapterend
