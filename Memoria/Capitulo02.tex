@@ -145,6 +145,49 @@ En esta misma pantalla, el usuario también puede pulsar sobre el botón \emph{T
 \end{figure}
 
 \section{Servidor}
-Este apartado se centra en la parte del servidor. El servidor proporciona por un lado respuestas a las peticiones que le realiza el cliente (devolviendo documentos en lenguaje JSON con los datos) y por otro lado, 
+Este apartado se centra en la parte del servidor. El servidor proporciona por un lado respuestas a las peticiones que le realiza el cliente (devolviendo documentos en lenguaje JSON con los datos) y por otro lado, sigue haciendo las funciones de tienda online.
 
+Como ya se ha comentado antes, la programación del servidor se escapa del ámbito de este PFC, pero es importante conocer la API que se ha creado para este proyecto. A continuación se detallan las llamadas a la API disponibles y el tipo de mensaje que devuelve.
+
+\subsection{/api/v1/Product}
+Devuelve un producto en concreto.
+
+Parámetros:
+\begin{itemize}
+	\item string : productGuid
+\end
+
+Resultado:
+\begin{lstlisting}
+	
+\end{lstlisting}
+
+\subsection{/api/v1/GetAllLocationsForProduct}
+Devuelve un listado con el stock del producto en cuestión en cada tienda.
+
+Parámetros:
+\begin{itemize}
+	\item string : productGuid
+\end
+
+Resultado:
+\begin{lstlisting}
+	
+\end{lstlisting}
+
+\subsection{/api/v1/GetStockInLocation}
+Devuelve el stock de un producto en una tienda dada la localización en coordenadas.
+
+Parámetros:
+\begin{itemize}
+	\item string : productGuid
+	\item double : latitude
+	\item double : longitude
+	\item double : accuracy
+\end
+
+Resultado:
+\begin{lstlisting}
+	
+\end{lstlisting}
 \chapterend
