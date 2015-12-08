@@ -43,6 +43,7 @@
 }
 
 \usepackage{bera}
+\usepackage{listings}
 \usepackage{xcolor}
 
 \colorlet{punct}{red!60!black}
@@ -50,8 +51,31 @@
 \definecolor{delim}{RGB}{20,105,176}
 \colorlet{numb}{magenta!60!black}
 
+\definecolor{bluekeywords}{RGB}{32,	93,	205	}
+\definecolor{greencomments}{RGB}{0,0.5,0}
+\definecolor{redstrings}{RGB}{0.64,0.08,0.08}
+\definecolor{xmlcomments}{RGB}{0.5,0.5,0.5}
+\definecolor{types}{RGB}{0.17,0.57,0.68}
+
+\lstdefinelanguage{csh}{
+	%numbers=left, %Nummerierung
+	%numberstyle=\tiny, % kleine Zeilennummern
+	frame=lines, % Oberhalb und unterhalb des Listings ist eine Linie
+	showspaces=false,
+	showtabs=false,
+	breaklines=true,
+	showstringspaces=false,
+	breakatwhitespace=true,
+	escapeinside={(*@}{@*)},
+	commentstyle=\color{greencomments},
+	morekeywords={partial, var, value, get, set, double, string},
+	keywordstyle=\color{bluekeywords},
+	stringstyle=\color{redstrings},
+	basicstyle=\ttfamily\small,
+}
+
 \lstdefinelanguage{json}{
-    basicstyle=\normalfont\ttfamily,
+    basicstyle=\small\ttfamily,
     numbers=left,
     numberstyle=\scriptsize,
     stepnumber=1,

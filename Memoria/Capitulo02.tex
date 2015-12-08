@@ -152,8 +152,8 @@ Como ya se ha comentado antes, la programación del servidor se escapa del ámbi
 \subsection{Product}
 Devuelve un producto en concreto. Sólo necesita un parámetro:
 
-\begin{lstlisting}
-	string : productGuid
+\begin{lstlisting}[language=csh]
+	string productGuid
 \end{lstlisting}
 
 El esquema del mensaje JSON devuelto se describe a continuación en formato JSON-schema.
@@ -164,8 +164,8 @@ El esquema del mensaje JSON devuelto se describe a continuación en formato JSON
 Devuelve un listado con el stock del producto en cuestión en cada tienda.
 
 Parámetros:
-\begin{lstlisting}
-	string : productGuid
+\begin{lstlisting}[language=csh]
+	string productGuid
 \end{lstlisting}
 
 
@@ -176,11 +176,11 @@ Resultado:
 Devuelve el stock de un producto en una tienda dada la localización en coordenadas.
 
 Parámetros:
-\begin{lstlisting}
-	string : productGuid
-	double : latitude
-	double : longitude
-	double : accuracy
+\begin{lstlisting}[language=csh]
+	string productGuid
+	double latitude
+	double longitude
+	double accuracy
 \end{lstlisting}
 
 Resultado:
