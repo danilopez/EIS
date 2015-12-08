@@ -1,0 +1,18 @@
+[
+    {
+        "InventoryLocationName": "string",
+        "InventoryLocationName2": "string",
+        "Address1": "string",
+        "Address2": "string",
+        "CityName": "string",
+        "PhoneNo": "string",
+        "ContactName": "string",
+        "ZipCode": "string",
+        "EMailAddress": "string",
+        "HomePage": "string",
+        "CountryGuid": "string",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Quantity": 0
+    }
+]
