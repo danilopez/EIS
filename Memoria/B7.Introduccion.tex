@@ -8,10 +8,30 @@ Aproximadamente, 4 de cada 5 habitantes de un país desarrollado tiene un smartp
 
 % TODO: Dar una imagen general sobre el uso de los smartphones.
 
-El objeto del presente proyecto es el desarrollo de una aplicación móvil en la que poder consultar la información relacionada con una prenda (talla, color, disponibilidad, localización, ...) en un comercio.
+El objeto del presente proyecto es el desarrollo de una aplicación móvil en la que poder consultar la información en un servidor relacionada con una prenda (talla, color, disponibilidad, localización, ...) en un comercio de manera rápida mediante la lectura de un código de barras
 
 
-El presente proyecto se compone de una aplicación para smartphones, que permite realizar búsquedas en un servidor de manera rápida gracias a la lectura de códigos de barras.
+El presente proyecto se compone de dos partes bien diferenciadas:
 
+\begin{itemize}
+	\item Por un lado se encuentra la aplicación cliente, que sería la aplicación móvil propiamente dicha. Esta aplicación se basa en la navegación entre pantallas, la inicial en la que se decodifica un código de barras mediante la cámara trasera del dispositivo, una pantalla de producto, un listado de tiendas y por último un mapa en el que se muestra la posición actual del usuario y de la tienda seleccionada.
+	\item Por otra parte, el servidor, en el que se tiene una API que proporciona los datos en formato JSON a la aplicación móvil cuando ésta los solicite.
+\end{itemize}
+
+Una vez decidido realizar la aplicación para el sistema operativo iOS, hay varias posibilidades en cuanto a su implementación: realizarla de manera nativa en Objective-C, de manera nativa en Swift, o usando uno de los muchos \textit{frameworks} disponibles para programar en iOS. Cada uno de los métodos tienen sus ventajas y desventajas.
+
+La programación nativa de aplicaciones tiene como ventajas principales el poder acceder a todos los recursos del dispositivo y el ejecutarse mucho más rápidamente. El problema consiste en que si se quiere portar la aplicación a otras plataformas habría que reprogramar la aplicación completamente para cada una de ellas.
+
+Se optado por programar de manera nativa usando Objective-C debido a que Swift se encontraba recién fundado y el autor de este proyecto cuenta con cierta experiencia previa programando en Objective-C.
+
+El presente documento está estructurado en diversos capítulos para pdoer explicar con detalle todas las partes del proyecto:
+
+\begin{enumerate}
+	\item Introducción: es el presente capítulo, en el que se hace una somera descripción y justificación del proyecto, así como de los objetivos a conseguir.
+	\item Tecnologías y herramientas empleadas: en este capítulo se detallan las herramientas software y hardware utilizadas, comparándolas con otras similares y justificando su elección en base a sus ventajas e inconvenientes.
+	\item Descripción de la aplicación: aquí se escribe en profundidad la lógica de la aplicación, tanto del cliente como del servidor. Se aclara la navegación entre ventanas de la aplicación móvil y se detallan aspectos de la implementación.
+	\item Plan de pruebas: este apartado se detallan cada una de las pruebas realizadas al sistema para comprobar su correcto funcionamiento.
+	\item Conclusiones y líneas futuras: en el último capítulo se hace un balance del proyecto, así como el estudio de posibles mejoras o ampliaciones.
+\end{enumerate}
 
 \chapterend
