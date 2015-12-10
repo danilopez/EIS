@@ -1,15 +1,26 @@
 %!TEX root = A0.Master.tex
 \chapterbeginx{Conclusiones y líneas futuras}
 
-	Después de todo el desarrollo del proyecto, es pertinente hacer una valoración final del mismo, respecto a los resultados obtenidos, las expectativas o el resultado de la experiencia acumulada.
+En el presente capítulo se exponen las conclusiones de este proyecto fin de carrera y se especifican algunas propuestas de posibles líneas futuras que añadan funcionalidad al sistema o lo mejoren en algún área.
 
-	En esta sección se exponen todos esos conceptos y enuncian unas conclusiones finales.
-	
-	Además, considerando también el estado de la técnica, se pueden deducir líneas futuras de trabajo, proponer otros puntos de vista o cualquier otra sugerencia como postámbulo del presente trabajo, para ser considerada por el lector o el tribunal evaluador.
+\sectionx{Conclusiones finales}
+El objetivo de este PFC ha sido desarrollar una aplicación que sea capaz de consultar el stock de un producto en un comercio físico que pertenece una cadena de tiendas de una misma empresa. Para ello, se ha seguido una arquitectura cliente-servidor. Por un lado se ha desarrollado una aplicación móvil para \textit{smartphones} con el sistema operativo iOS, y por otro se implementado una API en un ERP existente que diera servicio a una tienda online.
 
-\begin{flushright}
-{\large \pfcauthorname}\nli
-\today
-\end{flushright}
-	
+La decisión de usar un ERP que ya existiera y fuera conocido conlleva un ahorro de tiempo que en un entorno profesional supone un ahorro de dinero muy sustancial (en un principio, se desarrolló un servidor propio programado en \textit{Ruby on Rails}. Se han tenido en cuenta otros ERP para comercios como \textit{OpenCart} o \textit{Magento}, pero finalmente, teniendo en cuenta los recursos disponibles, se decidió por ExpandIT Internet Shop.
+
+Uno de los objetivos de este proyecto fin de carrera fue el de ahorrar tiempo al usuario, y este objetivo se ha complido con creces ya que en esta aplicación, el tiempo de uso puede ser inferior a 20 segundos, tiempo suficiente para que el usuario obtenga toda la información necesaria. Esto hace que el usuario sea más propenso usar nuestra aplicación ya que está pensada para ser usada en una tienda dentro de una tienda en una situación en la que el usuario no desea perder tiempo.
+
+La aplicación móvil es muy intuitiva y fácil de usar, de manera que cualquier usuario puede utilizarla sin ningún tipo de conocimiento previo.
+
+\sectionx{Líneas futuras}
+El programa desarrollado en este proyecto está abierto a posibles cambios y mejores en el futuro, con el objetivo de conseguir una herramienta más completa. A continuación se sugieren algunas posibles mejoras y alternativas:
+
+\begin{itemize}
+	\item Extender la aplicación móvil a otros sistemas operativos móviles, como Android o Windows.
+	\item Añadir una pestaña con el catálogo completo de productos.
+	\item Añadir la posibilidad de reservar productos.
+	\item Implementar un sistema de productos favoritos, lo que conllevaría el uso de un sistema de perfiles en el dispositivo.
+	\item Mejora de la interfaz de la cámara capturadora de códigos de barras. Otras aplicaciones de este tipo incorporan un marco sobre una capa en el que presentar la previsualización de la cámara.
+\end{itemize}
+
 \chapterend
